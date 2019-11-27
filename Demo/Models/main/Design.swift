@@ -93,19 +93,27 @@ class Design:Vue,V_ViewControllerProtocol{
            let data = self.arrayContent[index] as! VueData
            let number = data.v_identifier
            if data is AddCellModel{
-               
-               let bar = SelectionBar()
+               let bar = SelectionTabBar()
                bar.show { (data) in
-                   
-                   self.arrayContent[index] = data
-                   self.arrayContent.append(AddCellModel())
-                   self.v_array(vId: ARRAYID) { () -> Array<VueData>? in
-                       return self.arrayContent
+                
+                    self.arrayContent[index] = data
+                    self.arrayContent.append(AddCellModel())
+                    self.v_array(vId: ARRAYID) { () -> Array<VueData>? in
+                        return self.arrayContent
+                               
+                    }
+                    self.r.array = self.arrayContent
                               
-                   }
-                   self.r.array = self.arrayContent
+                }
 
-               }
+//            let bar = SelectionBar()
+//            bar.show { (data) in
+//
+//
+//
+//            }
+            
+           
                
            }else{
                if number == 1{

@@ -29,7 +29,7 @@ class Content201Cell: UITableViewCell {
         let a = UILabel()
         a.textAlignment = .left
         a.font = UIFont.boldSystemFont(ofSize: 12)
-        a.text = "稀里哗啦"
+        a.text = "姓名wyy"
         return a
     }()
     lazy private var toDoLabel:UILabel = {
@@ -53,7 +53,7 @@ class Content201Cell: UITableViewCell {
     lazy private var headerLabel:UILabel = {
         let a = UILabel()
         a.textAlignment = .left
-        a.text = "真正有突破行的练习，都是集中的，自我批判的，反复的练习。而不是以任务为目的的，以投入量为衡量的。"
+        a.text = "数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据"
         a.numberOfLines = 0
         return a
     }()

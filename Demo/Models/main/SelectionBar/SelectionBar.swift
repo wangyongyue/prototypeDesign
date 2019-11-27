@@ -27,20 +27,41 @@ class SelectionBar:Vue{
         
        
        var array = [VueData]()
-       array.append(Content201CellModel())
-       array.append(Content202CellModel())
-       array.append(Content203CellModel())
-       array.append(Content204CellModel())
-       array.append(Content205CellModel())
-       array.append(Content206CellModel())
         
+        
+        array.append(BannerCellModel())
+        
+        array.append(Content201CellModel())
+        array.append(Content202CellModel())
+        array.append(Content105CellModel())
+
+        array.append(Content203CellModel())
+        array.append(Content204CellModel())
+        array.append(Content205CellModel())
+        
+        
+        array.append(Content106CellModel())
         array.append(Content101CellModel())
         array.append(Content102CellModel())
-        array.append(Content103CellModel())
         array.append(Content104CellModel())
-        array.append(Content105CellModel())
-        array.append(Content106CellModel())
-       
+
+        
+        
+        array.append(Content301CellModel())
+        array.append(Content302CellModel())
+        array.append(Content303CellModel())
+        
+
+        array.append(Content206CellModel())
+        array.append(Content103CellModel())
+
+        
+        
+        array.append(MineCellModel())
+        array.append(MineTabCellModel())
+        array.append(MineSetupCellModel())
+
+     
 
        self.v_array(vId: ARRAYID) { () -> Array<VueData>? in
            return array

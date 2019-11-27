@@ -28,69 +28,43 @@ class Content206Cell: UITableViewCell {
         let a = UILabel()
         a.textAlignment = .left
         a.font = UIFont.boldSystemFont(ofSize: 12)
-        a.text = "稀里哗啦"
+        a.text = "姓名wyy"
         return a
     }()
     lazy private var toDoLabel:UILabel = {
         let a = UILabel()
         a.textAlignment = .left
         a.font = UIFont.boldSystemFont(ofSize: 12)
-        a.textColor = UIColor.lightGray
-        a.text = "发布了动态"
+        a.textColor = UIColor.red
+        a.text = "关注"
 
         return a
     }()
-    lazy private var timeLabel:UILabel = {
-        let a = UILabel()
-        a.textAlignment = .right
-        a.font = UIFont.boldSystemFont(ofSize: 12)
-        a.textColor = UIColor.lightGray
-        a.text = "5分钟以前"
-
-        return a
-    }()
+    
     lazy private var headerLabel:UILabel = {
         let a = UILabel()
         a.textAlignment = .left
-        a.text = "真正有突破行的练习，都是集中的，自我批判的，反复的练习。而不是以任务为目的的，以投入量为衡量的。"
+        a.text = "数据数据数据数据数据数据数据数据数据数据数据数据"
+        a.textColor = UIColor.white
         a.numberOfLines = 0
         return a
     }()
     
-    lazy private var zhuanButton:UIButton = {
+    lazy private var bigenButton:UIButton = {
         let a = UIButton()
-        a.setImage(UIImage.init(named: "know_share"), for: .normal)
-        a.setTitle("转发", for: .normal)
-        a.setTitleColor(UIColor.lightGray, for: .normal)
-        a.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
-
+        a.setImage(UIImage.init(named: "start"), for: .normal)
         return a
     }()
     
-    lazy private var pinglunButton:UIButton = {
-        let a = UIButton()
-        a.setImage(UIImage.init(named: "know_pinglun"), for: .normal)
-        a.setTitle("评论", for: .normal)
-        a.setTitleColor(UIColor.lightGray, for: .normal)
-        a.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
-
-        return a
-    }()
-    
-    lazy private var zanButton:UIButton = {
-        let a = UIButton()
-        a.setImage(UIImage.init(named: "know_zan"), for: .normal)
-        a.setTitle("点赞", for: .normal)
-        a.setTitleColor(UIColor.lightGray, for: .normal)
-        a.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
-        return a
-    }()
     
     lazy private var bigImage:UIImageView = {
         let a = UIImageView()
         a.layer.cornerRadius = 6
         a.layer.masksToBounds = true
-        a.image = UIImage.init(named: "feng_1")
+        a.image = UIImage.init(named: Image.fillImage("feng_15"))
+
+        a.contentMode = .scaleAspectFill
+
         return a
     }()
     
@@ -112,17 +86,10 @@ class Content206Cell: UITableViewCell {
 
         self.contentView.addSubview(self.nameLabel)
         self.contentView.addSubview(self.toDoLabel)
-        self.contentView.addSubview(self.timeLabel)
         self.contentView.addSubview(self.headerLabel)
 
-        self.contentView.addSubview(self.zhuanButton)
-        self.contentView.addSubview(self.pinglunButton)
-        self.contentView.addSubview(self.zanButton)
-        
+        self.contentView.addSubview(self.bigenButton)
         self.contentView.addSubview(self.deleteButton)
-
-        
-        
         self.contentView.addSubview(self.line)
 
         self.headImage.snp.makeConstraints { (make) in
@@ -134,66 +101,48 @@ class Content206Cell: UITableViewCell {
             
         }
         self.deleteButton.snp.makeConstraints { (make) in
-            
             make.top.equalTo(0)
             make.right.equalTo(0)
-
         }
-        self.bigImage.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(10)
-            make.right.equalTo(-12)
-            make.height.equalTo(30)
-            make.width.equalTo(30)
-            
-        }
+        
         self.nameLabel.snp.makeConstraints { (make) in
             
-            make.top.equalTo(self.headImage)
-            make.left.equalTo(self.headImage.snp_rightMargin).offset(10)
+            make.centerY.equalTo(self.headImage)
+            make.left.equalTo(self.headImage.snp_rightMargin).offset(20)
             
         }
+        
         self.toDoLabel.snp.makeConstraints { (make) in
             
-            make.top.equalTo(self.nameLabel.snp_bottomMargin).offset(10)
-            make.left.equalTo(self.headImage.snp_rightMargin).offset(10)
+            make.centerY.equalTo(self.headImage)
+            make.left.equalTo(self.nameLabel.snp_rightMargin).offset(20)
             
         }
-        self.timeLabel.snp.makeConstraints { (make) in
+        
+        self.bigImage.snp.makeConstraints { (make) in
             
-            make.top.equalTo(self.headImage)
+            make.top.equalTo(self.headImage.snp_bottomMargin).offset(20)
+            make.left.equalTo(12)
             make.right.equalTo(-12)
-           
-            
+            make.height.equalTo(180)
+
         }
+       
+        
         self.headerLabel.snp.makeConstraints { (make) in
             
             make.top.equalTo(self.headImage.snp_bottomMargin).offset(20)
-            make.left.equalTo(self.headImage)
-            make.right.equalTo(self.timeLabel)
+            make.left.equalTo(16)
+            make.right.equalTo(-16)
             
         }
        
-        self.zhuanButton.snp.makeConstraints { (make) in
+        self.bigenButton.snp.makeConstraints { (make) in
             
-            make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(20)
-            make.left.equalTo(self.headImage)
-            
-        }
-        self.pinglunButton.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(20)
-            make.left.equalTo(self.zhuanButton.snp_rightMargin).offset(20)
+            make.center.equalTo(self.bigImage)
             
         }
-        self.zanButton.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(20)
-            make.left.equalTo(self.pinglunButton.snp_rightMargin).offset(20)
-            
-        }
-        
-        
+       
         self.line.snp.makeConstraints { (make) in
             
             make.height.equalTo(6)
@@ -231,6 +180,6 @@ class Content206CellModel:VueData{
     
     override func v_height() -> CGFloat {
         
-        return 170
+        return 260
     }
 }

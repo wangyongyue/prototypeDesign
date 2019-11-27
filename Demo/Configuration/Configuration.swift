@@ -18,6 +18,8 @@ let  themeColor = UIColor.init(red: 9/255.0, green: 169/255.0, blue: 159/255.0, 
 let  bgColor = UIColor.init(red: 230/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1.0)
 
 class Configuration{
+    
+    var imageDefault = false //false true //为true显示默认图片
     static let instructions = KnowledgeInstructions()
     
     func getTabBar() -> UIViewController{

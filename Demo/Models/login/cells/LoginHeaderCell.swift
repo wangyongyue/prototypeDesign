@@ -21,7 +21,7 @@ class LoginHeaderCell: UITableViewCell {
         let a = UIImageView()
         a.layer.cornerRadius = 30
         a.layer.masksToBounds = true
-        a.image = UIImage.init(named: "feng_1")
+        a.image = UIImage.init(named: Image.fillImage("feng_1"))
         return a
     }()
     let tap = UITapGestureRecognizer()

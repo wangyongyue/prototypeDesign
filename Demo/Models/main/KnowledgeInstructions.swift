@@ -9,6 +9,7 @@
 import UIKit
 import VueSwift
 
+
 class KnowledgeInstructions: Configuration {
     
     override init() {
@@ -59,13 +60,26 @@ class KnowledgeInstructions: Configuration {
 
         
         Vue.register(aClass: Content101CellModel.classForCoder(), toClass: Content101Cell.classForCoder())
-        Vue.register(aClass: Content102CellModel.classForCoder(), toClass: Content202Cell.classForCoder())
-        Vue.register(aClass: Content103CellModel.classForCoder(), toClass: Content203Cell.classForCoder())
-        Vue.register(aClass: Content104CellModel.classForCoder(), toClass: Content204Cell.classForCoder())
-        Vue.register(aClass: Content105CellModel.classForCoder(), toClass: Content205Cell.classForCoder())
-        Vue.register(aClass: Content106CellModel.classForCoder(), toClass: Content206Cell.classForCoder())
+        Vue.register(aClass: Content102CellModel.classForCoder(), toClass: Content102Cell.classForCoder())
+        Vue.register(aClass: Content103CellModel.classForCoder(), toClass: Content103Cell.classForCoder())
+        Vue.register(aClass: Content104CellModel.classForCoder(), toClass: Content104Cell.classForCoder())
+        Vue.register(aClass: Content105CellModel.classForCoder(), toClass: Content105Cell.classForCoder())
+        Vue.register(aClass: Content106CellModel.classForCoder(), toClass: Content106Cell.classForCoder())
+        
+        Vue.register(aClass: Content300CellModel.classForCoder(), toClass: Content300Cell.classForCoder())
+        Vue.register(aClass: Content301CellModel.classForCoder(), toClass: Content301Cell.classForCoder())
+        Vue.register(aClass: Content302CellModel.classForCoder(), toClass: Content302Cell.classForCoder())
+        Vue.register(aClass: Content303CellModel.classForCoder(), toClass: Content303Cell.classForCoder())
+
+        
+        Vue.register(aClass: BannerCellModel.classForCoder(), toClass: BannerCell.classForCoder())
+        Vue.register(aClass: BannerSubCellModel.classForCoder(), toClass: BannerSubCell.classForCoder())
 
                
+        Vue.register(aClass: MineCellModel.classForCoder(), toClass: MineCell.classForCoder())
+        Vue.register(aClass: MineTabCellModel.classForCoder(), toClass: MineTabCell.classForCoder())
+        Vue.register(aClass: MineTabSubCellModel.classForCoder(), toClass: MineTabSubCell.classForCoder())
+        Vue.register(aClass: MineSetupCellModel.classForCoder(), toClass: MineSetupCell.classForCoder())
         
     }
     

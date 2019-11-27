@@ -26,5 +26,18 @@ class Image{
         return UIImage(named: "home")
     }
     
+    static func fillImage(_ a:String) -> String{
+        
+        if Configuration.instructions.imageDefault{
+            
+            return a
+        }
+        
+        
+        return "default_tu"
+    }
+    
+    
+    
   
 }

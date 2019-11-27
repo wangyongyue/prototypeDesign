@@ -73,7 +73,7 @@ class Details:Vue,V_ViewControllerProtocol{
             let number = data.v_identifier
             if data is AddCellModel{
                 
-                let bar = SelectionBar()
+                let bar = SelectionTabBar()
                 bar.show { (data) in
                     
                     self.arrayContent[index] = data

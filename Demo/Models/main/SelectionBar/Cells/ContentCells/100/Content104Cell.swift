@@ -10,13 +10,6 @@ import UIKit
 import VueSwift
 class Content104Cell: UITableViewCell {
     
-    lazy private var headImage:UIImageView = {
-        let a = UIImageView()
-        a.layer.cornerRadius = 12
-        a.layer.masksToBounds = true
-        a.image = UIImage.init(named: "know_tou")
-        return a
-    }()
     lazy private var deleteButton:UIButton = {
         let a = UIButton()
         a.setImage(UIImage.init(named: "file_delete"), for: .normal)
@@ -24,75 +17,45 @@ class Content104Cell: UITableViewCell {
         return a
     }()
     
-    lazy private var nameLabel:UILabel = {
-        let a = UILabel()
-        a.textAlignment = .left
-        a.font = UIFont.boldSystemFont(ofSize: 12)
-        a.text = "稀里哗啦"
-        return a
-    }()
-    lazy private var toDoLabel:UILabel = {
-        let a = UILabel()
-        a.textAlignment = .left
-        a.font = UIFont.boldSystemFont(ofSize: 12)
-        a.textColor = UIColor.lightGray
-        a.text = "发布了动态"
-
-        return a
-    }()
-    lazy private var timeLabel:UILabel = {
-        let a = UILabel()
-        a.textAlignment = .right
-        a.font = UIFont.boldSystemFont(ofSize: 12)
-        a.textColor = UIColor.lightGray
-        a.text = "5分钟以前"
-
-        return a
-    }()
     lazy private var headerLabel:UILabel = {
         let a = UILabel()
         a.textAlignment = .left
-        a.text = "真正有突破行的练习，都是集中的，自我批判的，反复的练习。而不是以任务为目的的，以投入量为衡量的。"
+        a.text = "数据数据数据数据"
         a.numberOfLines = 0
         return a
     }()
     
-    lazy private var zhuanButton:UIButton = {
-        let a = UIButton()
-        a.setImage(UIImage.init(named: "know_share"), for: .normal)
-        a.setTitle("转发", for: .normal)
-        a.setTitleColor(UIColor.lightGray, for: .normal)
-        a.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
-
+    lazy private var headerLabel1:UILabel = {
+        let a = UILabel()
+        a.textAlignment = .left
+        a.text = "数据数据数据数据"
+        a.numberOfLines = 0
         return a
     }()
-    
-    lazy private var pinglunButton:UIButton = {
-        let a = UIButton()
-        a.setImage(UIImage.init(named: "know_pinglun"), for: .normal)
-        a.setTitle("评论", for: .normal)
-        a.setTitleColor(UIColor.lightGray, for: .normal)
-        a.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
-
-        return a
-    }()
-    
-    lazy private var zanButton:UIButton = {
-        let a = UIButton()
-        a.setImage(UIImage.init(named: "know_zan"), for: .normal)
-        a.setTitle("点赞", for: .normal)
-        a.setTitleColor(UIColor.lightGray, for: .normal)
-        a.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
-        return a
-    }()
+   
     
     lazy private var bigImage:UIImageView = {
         let a = UIImageView()
         a.layer.cornerRadius = 6
         a.layer.masksToBounds = true
-        a.image = UIImage.init(named: "feng_1")
+        a.image = UIImage.init(named: Image.fillImage("feng_13"))
+
+        a.contentMode = .scaleAspectFill
+
         return a
     }()
+    
+    lazy private var bigImage1:UIImageView = {
+        let a = UIImageView()
+        a.layer.cornerRadius = 6
+        a.layer.masksToBounds = true
+        a.image = UIImage.init(named: Image.fillImage("feng_14"))
+
+        a.contentMode = .scaleAspectFill
+
+        return a
+    }()
+
     
     
     lazy private var line:UIView = {
@@ -107,96 +70,65 @@ class Content104Cell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.contentView.addSubview(self.headImage)
         self.contentView.addSubview(self.bigImage)
+        self.contentView.addSubview(self.bigImage1)
 
-        self.contentView.addSubview(self.nameLabel)
-        self.contentView.addSubview(self.toDoLabel)
-        self.contentView.addSubview(self.timeLabel)
+                
         self.contentView.addSubview(self.headerLabel)
+        self.contentView.addSubview(self.headerLabel1)
 
-        self.contentView.addSubview(self.zhuanButton)
-        self.contentView.addSubview(self.pinglunButton)
-        self.contentView.addSubview(self.zanButton)
-        
         self.contentView.addSubview(self.deleteButton)
 
         
         
         self.contentView.addSubview(self.line)
 
-        self.headImage.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(10)
-            make.left.equalTo(12)
-            make.height.equalTo(30)
-            make.width.equalTo(30)
-            
-        }
+        
         self.deleteButton.snp.makeConstraints { (make) in
             
             make.top.equalTo(0)
             make.right.equalTo(0)
 
         }
+        
+        let w = (Adapter.width() - 24 - 10)/2
+        let h = w/3*2 - 30
+
         self.bigImage.snp.makeConstraints { (make) in
             
             make.top.equalTo(10)
+            make.left.equalTo(12)
+            make.height.equalTo(h)
+            make.width.equalTo(w)
+            
+        }
+        self.bigImage1.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(10)
             make.right.equalTo(-12)
-            make.height.equalTo(30)
-            make.width.equalTo(30)
-            
-        }
-        self.nameLabel.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(self.headImage)
-            make.left.equalTo(self.headImage.snp_rightMargin).offset(10)
-            
-        }
-        self.toDoLabel.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(self.nameLabel.snp_bottomMargin).offset(10)
-            make.left.equalTo(self.headImage.snp_rightMargin).offset(10)
-            
-        }
-        self.timeLabel.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(self.headImage)
-            make.right.equalTo(-12)
-           
-            
-        }
-        self.headerLabel.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(self.headImage.snp_bottomMargin).offset(20)
-            make.left.equalTo(self.headImage)
-            make.right.equalTo(self.timeLabel)
-            
-        }
-       
-        self.zhuanButton.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(20)
-            make.left.equalTo(self.headImage)
-            
-        }
-        self.pinglunButton.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(20)
-            make.left.equalTo(self.zhuanButton.snp_rightMargin).offset(20)
-            
-        }
-        self.zanButton.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(20)
-            make.left.equalTo(self.pinglunButton.snp_rightMargin).offset(20)
+            make.height.equalTo(h)
+            make.width.equalTo(w)
             
         }
         
+       self.headerLabel.snp.makeConstraints { (make) in
+           
+           make.top.equalTo(self.bigImage.snp_bottomMargin).offset(20)
+           make.left.equalTo(self.bigImage)
+           make.right.equalTo(self.bigImage)
+           
+       }
+        self.headerLabel1.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(self.bigImage1.snp_bottomMargin).offset(20)
+            make.left.equalTo(self.bigImage1)
+            make.right.equalTo(self.bigImage1)
+            
+        }
         
         self.line.snp.makeConstraints { (make) in
             
-            make.height.equalTo(6)
+            make.height.equalTo(0)
             make.left.equalTo(0)
             make.right.equalTo(0)
             make.bottom.equalTo(0)
@@ -210,7 +142,6 @@ class Content104Cell: UITableViewCell {
     }
     override func setV_Model(_ aModel: VueData) {
         if aModel is Content104CellModel{
-            
             let m = aModel as! Content104CellModel
             deleteButton.v_click{
                 
@@ -230,7 +161,10 @@ class Content104CellModel:VueData{
     var name:String?
     
     override func v_height() -> CGFloat {
-        
-        return 170
+        let w = (Adapter.width() - 24 - 10)/2
+        let h = w/3*2 - 30 + 50
+        return  h
     }
 }
+
+

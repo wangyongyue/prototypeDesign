@@ -28,7 +28,7 @@ class Content202Cell: UITableViewCell {
         let a = UILabel()
         a.textAlignment = .left
         a.font = UIFont.boldSystemFont(ofSize: 12)
-        a.text = "稀里哗啦"
+        a.text = "数据数据"
         return a
     }()
     lazy private var toDoLabel:UILabel = {
@@ -36,7 +36,7 @@ class Content202Cell: UITableViewCell {
         a.textAlignment = .left
         a.font = UIFont.boldSystemFont(ofSize: 12)
         a.textColor = UIColor.lightGray
-        a.text = "发布了动态"
+        a.text = "18.4万人收藏"
 
         return a
     }()
@@ -52,7 +52,7 @@ class Content202Cell: UITableViewCell {
     lazy private var headerLabel:UILabel = {
         let a = UILabel()
         a.textAlignment = .left
-        a.text = "真正有突破行的练习，都是集中的，自我批判的，反复的练习。而不是以任务为目的的，以投入量为衡量的。"
+        a.text = "数据数据数据数据"
         a.numberOfLines = 0
         return a
     }()
@@ -90,7 +90,9 @@ class Content202Cell: UITableViewCell {
         let a = UIImageView()
         a.layer.cornerRadius = 6
         a.layer.masksToBounds = true
-        a.image = UIImage.init(named: "feng_1")
+        a.image = UIImage.init(named: Image.fillImage("feng_2"))
+        a.contentMode = .scaleAspectFill
+
         return a
     }()
     
@@ -159,8 +161,6 @@ class Content202Cell: UITableViewCell {
             
         }
        
-        
-        
         
         self.line.snp.makeConstraints { (make) in
             

@@ -14,7 +14,7 @@ class KnowledgeM3CrossCell: UICollectionViewCell {
         let a = UIImageView()
         a.layer.cornerRadius = 6
         a.layer.masksToBounds = true
-        a.image = UIImage.init(named: "feng_1")
+        a.image = UIImage.init(named: Image.fillImage("feng_1"))
         return a
     }()
     
@@ -22,7 +22,7 @@ class KnowledgeM3CrossCell: UICollectionViewCell {
     lazy private var headerLabel:UILabel = {
         let a = UILabel()
         a.textAlignment = .left
-        a.text = "流行文化中的克苏鲁神话"
+        a.text = "数据数据数据数据数据"
         a.numberOfLines = 1
         a.font = UIFont.boldSystemFont(ofSize: 13)
         return a
@@ -31,7 +31,7 @@ class KnowledgeM3CrossCell: UICollectionViewCell {
     lazy private var timeLabel:UILabel = {
            let a = UILabel()
            a.textAlignment = .left
-           a.text = "大乘虚怀苦"
+           a.text = "数据数据数据数据数据"
            a.numberOfLines = 1
            a.textColor = UIColor.lightGray
            a.font = UIFont.boldSystemFont(ofSize: 13)

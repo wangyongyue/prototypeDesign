@@ -84,7 +84,7 @@ class TabHMMCell: UITableViewCell {
          self.contentView.addGestureRecognizer(self.tap)
 
          image1.snp.makeConstraints { (make) in
-             make.top.equalTo(10)
+             make.bottom.equalTo(-20)
              make.centerX.equalTo(Adapter.width()/4)
          }
          label1.snp.makeConstraints { (make) in
@@ -92,7 +92,7 @@ class TabHMMCell: UITableViewCell {
              make.centerX.equalTo(Adapter.width()/4)
          }
          image2.snp.makeConstraints { (make) in
-             make.top.equalTo(10)
+             make.bottom.equalTo(-20)
              make.centerX.equalTo(Adapter.width()/4*3)
          }
          label2.snp.makeConstraints { (make) in
@@ -101,7 +101,7 @@ class TabHMMCell: UITableViewCell {
          }
         
          image3.snp.makeConstraints { (make) in
-             make.top.equalTo(10)
+             make.bottom.equalTo(-20)
              make.centerX.equalTo(Adapter.width()/2)
          }
          label3.snp.makeConstraints { (make) in
@@ -136,6 +136,9 @@ class TabHMMCell: UITableViewCell {
 class TabHMMCellModel:VueData{
     
     var name:String?
+    override func v_height() -> CGFloat {
+        return 80
+    }
   
 }
 

@@ -96,13 +96,13 @@ class Alert: UIView {
         let leftButton = UIButton()
         leftButton.setTitle("取消", for: .normal)
         leftButton.setTitleColor(Configuration.instructions.themeColor(), for: .normal)
-        leftButton.frame = CGRect.init(x: 10, y: 70, width: 60, height: 50)
+        leftButton.frame = CGRect.init(x: 10, y: 60, width: 60, height: 50)
         bgView.addSubview(leftButton)
         
         let rightButton = UIButton()
         rightButton.setTitle("确定", for: .normal)
         rightButton.setTitleColor(Configuration.instructions.themeColor(), for: .normal)
-        rightButton.frame = CGRect.init(x: bgView.frame.width - 60, y: 70, width: 60, height: 50)
+        rightButton.frame = CGRect.init(x: bgView.frame.width - 60, y: 60, width: 60, height: 50)
         bgView.addSubview(rightButton)
         
         rightButton.v_click {
@@ -122,6 +122,61 @@ class Alert: UIView {
             v.removeFromSuperview()
         }
     }
+    
+    static func defaultImageStyle(_ block:@escaping () -> ()){
+        
+        let v = UIView()
+        v.backgroundColor = UIColor.init(white: 0.6, alpha: 0.3)
+        
+        let window = UIApplication.shared.keyWindow
+        v.frame = window?.bounds ?? CGRect.zero
+        window?.addSubview(v)
+        
+        let bgView = UIView()
+        bgView.backgroundColor = UIColor.white
+        bgView.frame = CGRect.init(x: 50, y: 200, width: v.frame.width - 100, height: 110)
+        bgView.layer.cornerRadius = 10
+        bgView.layer.masksToBounds = true
+        v.addSubview(bgView)
+        
+        let label = UILabel()
+        label.textColor = UIColor.black
+        label.frame = CGRect.init(x: 10, y: 10, width: v.frame.width - 120, height: 50)
+        label.textAlignment = .center
+        label.text = "是否选择彩色图片的样式进行操作"
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.backgroundColor = UIColor.clear
+        label.layer.borderColor = UIColor.black.cgColor
+        bgView.addSubview(label)
+        
+        let leftButton = UIButton()
+        leftButton.setTitle("取消", for: .normal)
+        leftButton.setTitleColor(Configuration.instructions.themeColor(), for: .normal)
+        leftButton.frame = CGRect.init(x: 10, y: 60, width: 60, height: 50)
+        bgView.addSubview(leftButton)
+        
+        let rightButton = UIButton()
+        rightButton.setTitle("确定", for: .normal)
+        rightButton.setTitleColor(Configuration.instructions.themeColor(), for: .normal)
+        rightButton.frame = CGRect.init(x: bgView.frame.width - 60, y: 60, width: 60, height: 50)
+        bgView.addSubview(rightButton)
+        
+        rightButton.v_click {
+            Configuration.instructions.imageDefault = true
+            block()
+            v.removeFromSuperview()
+
+        }
+        leftButton.v_click {
+            Configuration.instructions.imageDefault = false
+            block()
+            v.removeFromSuperview()
+        }
+    }
+    
+    
+    
+    
     
 
 }

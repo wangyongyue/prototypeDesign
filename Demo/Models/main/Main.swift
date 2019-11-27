@@ -22,7 +22,7 @@ class Main:Vue,V_ViewControllerProtocol{
         dealStatus()
         dealNav()
         dealContent()
-      
+        
     }
     private func dealStatus(){
         
@@ -114,10 +114,17 @@ class Main:Vue,V_ViewControllerProtocol{
                         App.instance.tabBar = bar
                         App.instance.name = m.name
                         App.instance.analysisCache()
+                        
+                        Alert.defaultImageStyle {
+                            
+                            UIViewController.toHome()
 
-                        UIViewController.toHome()
+                        }
+
+
                                                
                     }else{
+                        
 
                         TabSelectionBar().show { (bar) in
                             
@@ -125,7 +132,12 @@ class Main:Vue,V_ViewControllerProtocol{
                             App.instance.name = m.name
                             App.instance.analysisCache()
 
-                            UIViewController.toHome()
+                            Alert.defaultImageStyle {
+                                
+                                UIViewController.toHome()
+
+                            }
+
                             
                         }
                         

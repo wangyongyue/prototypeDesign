@@ -13,7 +13,7 @@ class KnowledgeM2Cell: UITableViewCell {
         let a = UIImageView()
         a.layer.cornerRadius = 6
         a.layer.masksToBounds = true
-        a.image = UIImage.init(named: "feng_1")
+        a.image = UIImage.init(named: Image.fillImage("feng_1"))
         return a
     }()
     
@@ -21,7 +21,7 @@ class KnowledgeM2Cell: UITableViewCell {
         let a = UIImageView()
         a.layer.cornerRadius = 6
         a.layer.masksToBounds = true
-        a.image = UIImage.init(named: "feng_1")
+        a.image = UIImage.init(named: Image.fillImage("feng_1"))
         return a
     }()
     
