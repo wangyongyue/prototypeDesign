@@ -208,6 +208,6 @@ class Content101CellModel:VueData{
     
     override func v_height() -> CGFloat {
         
-        return (Adapter.width() - 24 - 10)/3 + 100
+        return (Adapter.width() - 24 - 10)/3 + 130
     }
 }
