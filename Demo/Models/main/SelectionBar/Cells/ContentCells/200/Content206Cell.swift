@@ -28,7 +28,7 @@ class Content206Cell: UITableViewCell {
         let a = UILabel()
         a.textAlignment = .left
         a.font = UIFont.boldSystemFont(ofSize: 12)
-        a.text = "姓名wyy"
+        a.text = "数据数据"
         return a
     }()
     lazy private var toDoLabel:UILabel = {
@@ -36,7 +36,7 @@ class Content206Cell: UITableViewCell {
         a.textAlignment = .left
         a.font = UIFont.boldSystemFont(ofSize: 12)
         a.textColor = UIColor.red
-        a.text = "关注"
+        a.text = "数据数据"
 
         return a
     }()

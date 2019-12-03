@@ -36,7 +36,7 @@ class Content202Cell: UITableViewCell {
         a.textAlignment = .left
         a.font = UIFont.boldSystemFont(ofSize: 12)
         a.textColor = UIColor.lightGray
-        a.text = "18.4万人收藏"
+        a.text = "数据数据"
 
         return a
     }()
@@ -60,7 +60,7 @@ class Content202Cell: UITableViewCell {
     lazy private var zhuanButton:UIButton = {
         let a = UIButton()
         a.setImage(UIImage.init(named: "know_share"), for: .normal)
-        a.setTitle("转发", for: .normal)
+        a.setTitle("数据", for: .normal)
         a.setTitleColor(UIColor.lightGray, for: .normal)
         a.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
 
@@ -70,7 +70,7 @@ class Content202Cell: UITableViewCell {
     lazy private var pinglunButton:UIButton = {
         let a = UIButton()
         a.setImage(UIImage.init(named: "know_pinglun"), for: .normal)
-        a.setTitle("评论", for: .normal)
+        a.setTitle("数据", for: .normal)
         a.setTitleColor(UIColor.lightGray, for: .normal)
         a.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
 
@@ -80,7 +80,7 @@ class Content202Cell: UITableViewCell {
     lazy private var zanButton:UIButton = {
         let a = UIButton()
         a.setImage(UIImage.init(named: "know_zan"), for: .normal)
-        a.setTitle("点赞", for: .normal)
+        a.setTitle("数据", for: .normal)
         a.setTitleColor(UIColor.lightGray, for: .normal)
         a.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
         return a

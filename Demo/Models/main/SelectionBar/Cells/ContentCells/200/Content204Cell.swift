@@ -30,7 +30,7 @@ class Content204Cell: UITableViewCell {
          a.textAlignment = .right
          a.font = UIFont.boldSystemFont(ofSize: 12)
          a.textColor = UIColor.lightGray
-         a.text = "数据网 评论15 一天前"
+         a.text = "数据数据"
 
          return a
      }()

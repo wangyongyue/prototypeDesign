@@ -22,7 +22,7 @@ class KnowledgeAttentionCell: UITableViewCell {
         let a = UILabel()
         a.textAlignment = .left
         a.font = UIFont.boldSystemFont(ofSize: 12)
-        a.text = "稀里哗啦"
+        a.text = "数据数据"
         return a
     }()
     lazy private var toDoLabel:UILabel = {
@@ -30,7 +30,7 @@ class KnowledgeAttentionCell: UITableViewCell {
         a.textAlignment = .left
         a.font = UIFont.boldSystemFont(ofSize: 12)
         a.textColor = UIColor.lightGray
-        a.text = "发布了动态"
+        a.text = "数据数据"
 
         return a
     }()

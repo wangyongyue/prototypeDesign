@@ -29,7 +29,7 @@ class Content201Cell: UITableViewCell {
         let a = UILabel()
         a.textAlignment = .left
         a.font = UIFont.boldSystemFont(ofSize: 12)
-        a.text = "姓名wyy"
+        a.text = "数据数据"
         return a
     }()
     lazy private var toDoLabel:UILabel = {
@@ -71,7 +71,7 @@ class Content201Cell: UITableViewCell {
     lazy private var pinglunButton:UIButton = {
         let a = UIButton()
         a.setImage(UIImage.init(named: "know_pinglun"), for: .normal)
-        a.setTitle("评论", for: .normal)
+        a.setTitle("数据", for: .normal)
         a.setTitleColor(UIColor.lightGray, for: .normal)
         a.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
 
@@ -81,7 +81,7 @@ class Content201Cell: UITableViewCell {
     lazy private var zanButton:UIButton = {
         let a = UIButton()
         a.setImage(UIImage.init(named: "know_zan"), for: .normal)
-        a.setTitle("点赞", for: .normal)
+        a.setTitle("数据", for: .normal)
         a.setTitleColor(UIColor.lightGray, for: .normal)
         a.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
         return a

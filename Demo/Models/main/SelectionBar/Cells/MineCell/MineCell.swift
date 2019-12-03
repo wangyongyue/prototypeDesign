@@ -27,7 +27,7 @@ class MineCell: UITableViewCell {
     lazy private var nameLabel:UILabel = {
         let a = UILabel()
         a.textAlignment = .left
-        a.text = "姓名wyy"
+        a.text = "数据数据"
         return a
     }()
     lazy private var toDoLabel:UILabel = {
@@ -35,7 +35,7 @@ class MineCell: UITableViewCell {
         a.textAlignment = .left
         a.font = UIFont.boldSystemFont(ofSize: 12)
         a.textColor = UIColor.lightGray
-        a.text = "完善资料"
+        a.text = "数据数据"
 
         return a
     }()
@@ -44,7 +44,7 @@ class MineCell: UITableViewCell {
     lazy private var zhuanButton:UIButton = {
         let a = UIButton()
         a.setImage(UIImage.init(named: "know_share"), for: .normal)
-        a.setTitle(" 关注", for: .normal)
+        a.setTitle(" 数据", for: .normal)
         a.setTitleColor(UIColor.black, for: .normal)
         a.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
 
@@ -54,7 +54,7 @@ class MineCell: UITableViewCell {
     lazy private var pinglunButton:UIButton = {
         let a = UIButton()
         a.setImage(UIImage.init(named: "know_pinglun"), for: .normal)
-        a.setTitle(" 粉丝", for: .normal)
+        a.setTitle(" 数据", for: .normal)
         a.setTitleColor(UIColor.black, for: .normal)
         a.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
 
@@ -64,7 +64,7 @@ class MineCell: UITableViewCell {
     lazy private var zanButton:UIButton = {
         let a = UIButton()
         a.setImage(UIImage.init(named: "know_zan"), for: .normal)
-        a.setTitle(" 点赞", for: .normal)
+        a.setTitle(" 数据", for: .normal)
         a.setTitleColor(UIColor.black, for: .normal)
         a.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
         return a

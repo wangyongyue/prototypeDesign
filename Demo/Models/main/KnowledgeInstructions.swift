@@ -89,16 +89,16 @@ class KnowledgeInstructions: Configuration {
         if let data = App.instance.tabBar{
             if data is TabHMCellModel{
                
-               return createBar(images: ["konw_1","konw_4"], titles: ["首页","我的"])
+               return createBar(images: ["konw_1","konw_1"], titles: ["tab1","tab2"])
             }else if data is TabHMMCellModel{
                
-               return createBar(images: ["konw_1","konw_3","konw_4"], titles: ["首页","消息","我的"])
+               return createBar(images: ["konw_1","konw_1","konw_1"], titles: ["tab1","tab2","tab3"])
             }else if data is TabHHMMCellModel{
                
-               return createBar(images: ["konw_1","konw_2","konw_3","konw_4"], titles: ["首页","会员","消息","我的"])
+               return createBar(images: ["konw_1","konw_1","konw_1","konw_1"], titles: ["tab1","tab2","tab3","tab4"])
             }else if data is TabHHSMMCellModel{
                
-               return createBar(images: ["konw_1","konw_2","konw_5","konw_3","konw_4"], titles: ["首页","会员","客服","消息","我的"])
+               return createBar(images: ["konw_1","konw_1","konw_1","konw_1","konw_1"], titles: ["tab1","tab2","tab3","tab4","tab5"])
             }
         }
         

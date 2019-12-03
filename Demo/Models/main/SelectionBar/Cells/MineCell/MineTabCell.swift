@@ -86,10 +86,10 @@ class MineTabCell: UITableViewCell {
             let m = aModel as! MineTabCellModel
             
             var array = Array<VueData>()
-            array.append(MineTabSubCellModel("mine_1","我的历史"))
-            array.append(MineTabSubCellModel("mine_2","我的收藏"))
-            array.append(MineTabSubCellModel("mine_3","我的下载"))
-            array.append(MineTabSubCellModel("mine_4","我的预定"))
+            array.append(MineTabSubCellModel("mine_1","数据数据"))
+            array.append(MineTabSubCellModel("mine_2","数据数据"))
+            array.append(MineTabSubCellModel("mine_3","数据数据"))
+            array.append(MineTabSubCellModel("mine_4","数据数据"))
 
             self.m.v_array(vId: ARRAYID) { () -> Array<VueData>? in
                 return array
