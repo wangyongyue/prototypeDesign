@@ -15,7 +15,7 @@ class TabHMCell: UITableViewCell {
         a.textAlignment = .center
         a.textColor = Configuration.instructions.navigtaionTextColor()
         a.backgroundColor = UIColor.clear
-        a.text = "首页"
+        a.text = "tab1"
         a.font = UIFont.systemFont(ofSize: 13)
         return a
     }()
@@ -33,12 +33,12 @@ class TabHMCell: UITableViewCell {
         a.textColor = Configuration.instructions.navigtaionTextColor()
         a.backgroundColor = UIColor.clear
         a.font = UIFont.systemFont(ofSize: 13)
-        a.text = "我的"
+        a.text = "tab2"
         return a
     }()
     let image2:UIImageView = {
         let a = UIImageView()
-        a.image = UIImage.init(named: "konw_4")
+        a.image = UIImage.init(named: "konw_1")
         a.backgroundColor = UIColor.clear
         return a
     }()

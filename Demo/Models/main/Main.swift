@@ -131,12 +131,12 @@ class Main:Vue,V_ViewControllerProtocol{
                             App.instance.tabBar = bar
                             App.instance.name = m.name
                             App.instance.analysisCache()
+                            UIViewController.toHome()
 
-                            Alert.defaultImageStyle {
-                                
-                                UIViewController.toHome()
-
-                            }
+//                            Alert.defaultImageStyle {
+//                                
+//
+//                            }
 
                             
                         }

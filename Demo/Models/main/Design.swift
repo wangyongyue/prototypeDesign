@@ -64,6 +64,7 @@ class Design:Vue,V_ViewControllerProtocol{
                 if number == 1{
                     
                     UIViewController.toMain()
+                    Alert.show(str: "原型保存完成")
                 }
                 
             }

@@ -28,6 +28,8 @@ class TabSelectionBar:Vue{
         
        
        var array = [VueData]()
+        
+       array.append(TitleCellModel("选择模板类型"))
        array.append(TabHMCellModel())
        array.append(TabHMMCellModel())
        array.append(TabHHMMCellModel())
@@ -39,7 +41,8 @@ class TabSelectionBar:Vue{
         
        self.v_index(vId: INDEXID) { (index) in
             
-         let data = array[index] as! VueData
+        if index == 0{return}
+        let data = array[index] as! VueData
          self.block?(data)
          self.view?.removeFromSuperview()
         

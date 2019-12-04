@@ -81,6 +81,9 @@ class KnowledgeInstructions: Configuration {
         Vue.register(aClass: MineTabSubCellModel.classForCoder(), toClass: MineTabSubCell.classForCoder())
         Vue.register(aClass: MineSetupCellModel.classForCoder(), toClass: MineSetupCell.classForCoder())
         
+        Vue.register(aClass: TitleCellModel.classForCoder(), toClass: TitleCell.classForCoder())
+
+        
     }
     
 

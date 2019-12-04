@@ -15,7 +15,7 @@ class TabHHSMMCell: UITableViewCell {
          a.textAlignment = .center
          a.textColor = Configuration.instructions.navigtaionTextColor()
          a.backgroundColor = UIColor.clear
-         a.text = "首页"
+         a.text = "tab1"
          a.font = UIFont.systemFont(ofSize: 13)
          return a
      }()
@@ -33,12 +33,12 @@ class TabHHSMMCell: UITableViewCell {
          a.textColor = Configuration.instructions.navigtaionTextColor()
          a.backgroundColor = UIColor.clear
          a.font = UIFont.systemFont(ofSize: 13)
-         a.text = "我的"
+         a.text = "tab5"
          return a
      }()
      let image2:UIImageView = {
          let a = UIImageView()
-         a.image = UIImage.init(named: "konw_4")
+         a.image = UIImage.init(named: "konw_1")
          a.backgroundColor = UIColor.clear
          return a
      }()
@@ -49,12 +49,12 @@ class TabHHSMMCell: UITableViewCell {
         a.textColor = Configuration.instructions.navigtaionTextColor()
         a.backgroundColor = UIColor.clear
         a.font = UIFont.systemFont(ofSize: 13)
-        a.text = "消息"
+        a.text = "tab4"
         return a
     }()
     let image3:UIImageView = {
         let a = UIImageView()
-        a.image = UIImage.init(named: "konw_3")
+        a.image = UIImage.init(named: "konw_1")
         a.backgroundColor = UIColor.clear
         return a
     }()
@@ -67,12 +67,12 @@ class TabHHSMMCell: UITableViewCell {
         a.textColor = Configuration.instructions.navigtaionTextColor()
         a.backgroundColor = UIColor.clear
         a.font = UIFont.systemFont(ofSize: 13)
-        a.text = "会员"
+        a.text = "tab2"
         return a
     }()
     let image4:UIImageView = {
         let a = UIImageView()
-        a.image = UIImage.init(named: "konw_2")
+        a.image = UIImage.init(named: "konw_1")
         a.backgroundColor = UIColor.clear
         return a
     }()
@@ -83,12 +83,12 @@ class TabHHSMMCell: UITableViewCell {
         a.textColor = Configuration.instructions.navigtaionTextColor()
         a.backgroundColor = UIColor.clear
         a.font = UIFont.systemFont(ofSize: 13)
-        a.text = "客服"
+        a.text = "tab3"
         return a
     }()
     let image5:UIImageView = {
         let a = UIImageView()
-        a.image = UIImage.init(named: "konw_5")
+        a.image = UIImage.init(named: "konw_1")
         a.backgroundColor = UIColor.clear
         return a
     }()
