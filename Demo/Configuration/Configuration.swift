@@ -17,9 +17,17 @@ let HEIGHT:CGFloat = UIScreen.main.bounds.height
 let  themeColor = UIColor.init(red: 9/255.0, green: 169/255.0, blue: 159/255.0, alpha: 1.0)
 let  bgColor = UIColor.init(red: 230/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1.0)
 
+//状态
+enum SomponentStatus {
+    case select
+    case edit
+}
+
 class Configuration{
     
     var imageDefault = false //false true //为true显示默认图片
+    var previewDefault = false //
+
     static let instructions = KnowledgeInstructions()
     
     func getTabBar() -> UIViewController{
@@ -78,6 +86,15 @@ extension UIViewController{
         App.instance.removeAll()
         let app = UIApplication.shared.delegate as! AppDelegate
         let tab = BaseNavigationController.init(rootViewController: Main().v_viewController())
+        app.window?.rootViewController = tab;
+        app.window?.makeKeyAndVisible();
+               
+    }
+    
+    static func toEditor(){
+       
+        let app = UIApplication.shared.delegate as! AppDelegate
+        let tab = Editor().v_viewController()
         app.window?.rootViewController = tab;
         app.window?.makeKeyAndVisible();
                

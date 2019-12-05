@@ -103,12 +103,21 @@ class TabHMCell: UITableViewCell {
     }
     
 }
-class TabHMCellModel:VueData{
+class TabHMCellModel:BaseData{
     
     var name:String?
     override func v_height() -> CGFloat {
+        if status == .edit{
+            return 50
+        }
         return 80
     }
   
 }
-
+class BaseData:VueData{
+    var status:SomponentStatus = .select
+    convenience  init(_ astatus:SomponentStatus){
+        self.init()
+        status = astatus
+    }
+}

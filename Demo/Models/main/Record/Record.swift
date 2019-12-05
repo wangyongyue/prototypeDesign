@@ -148,7 +148,8 @@ class App: NSObject {
         var appTitles = [VueData]()
         if let titleArray = userDefault.stringArray(forKey: "AppTitles"){
             for value in titleArray{
-                let a = BriefCellModel()
+//                let a = BriefCellModel()
+                let a = MainSubCellModel()
                 a.name = value
                 if let className = userDefault.string(forKey: value){
                     if let classType = NSClassFromString(className) as? VueData.Type {

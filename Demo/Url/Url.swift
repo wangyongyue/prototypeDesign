@@ -27,11 +27,25 @@ let RELOADDataID = "ReloadDataID"
 
 let SUPERVIEWREMOVE = "SuperViewRemove"
 
+let RIGHTARRAYID = "RightArrayID"
+let RIGHTINDEXID = "RightIndexID"
+
+let LEFTARRAYID = "LeftArrayID"
+let LEFTINDEXID = "LefIndexID"
+
 let NAVARRAYID = "NavArrayID"
 let NAVINDEXID = "NavIndexID"
 
 let ARRAYID = "ArrayID"
 let INDEXID = "IndexID"
+
+
+let BARARRAYID = "BarArrayID"
+let BARINDEXID = "BarIndexID"
+
+
+let BOTTOMARRAYID = "BottomArrayID"
+let BOTTOMINDEXID = "BottomIndexID"
 
 let TABID = "TabID"
 let TABINDEXID = "TabIndexID"

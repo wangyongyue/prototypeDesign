@@ -63,6 +63,14 @@
 		184FB686237E9B2300410DF2 /* KnowledgeMembersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184FB685237E9B2300410DF2 /* KnowledgeMembersCell.swift */; };
 		184FB688237E9D9300410DF2 /* KnowledgeMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184FB687237E9D9300410DF2 /* KnowledgeMessageCell.swift */; };
 		184FB68A237EA04E00410DF2 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184FB689237EA04E00410DF2 /* TodoCell.swift */; };
+		186A19702398CFD50085FC33 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186A196F2398CFD50085FC33 /* MainCell.swift */; };
+		186A19722398CFE90085FC33 /* MainSubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186A19712398CFE90085FC33 /* MainSubCell.swift */; };
+		186A19742398DFCB0085FC33 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186A19732398DFCB0085FC33 /* EditorViewController.swift */; };
+		186A19762398EF8D0085FC33 /* Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186A19752398EF8D0085FC33 /* Editor.swift */; };
+		186A19782398F2710085FC33 /* EditorDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186A19772398F2710085FC33 /* EditorDesign.swift */; };
+		186A197B2398F29E0085FC33 /* EditorDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186A197A2398F29E0085FC33 /* EditorDetails.swift */; };
+		186A197F239903AB0085FC33 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186A197E239903AB0085FC33 /* EditorView.swift */; };
+		186A198123990EB50085FC33 /* EditorLRCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186A198023990EB50085FC33 /* EditorLRCell.swift */; };
 		1884C719237BB45600A05B9A /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884C718237BB45600A05B9A /* AlertView.swift */; };
 		1884C71C237BB55A00A05B9A /* Adapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884C71B237BB55A00A05B9A /* Adapter.swift */; };
 		1884C745237BD0E400A05B9A /* KnowledgeInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884C744237BD0E400A05B9A /* KnowledgeInstructions.swift */; };
@@ -210,6 +218,14 @@
 		184FB685237E9B2300410DF2 /* KnowledgeMembersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeMembersCell.swift; sourceTree = "<group>"; };
 		184FB687237E9D9300410DF2 /* KnowledgeMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeMessageCell.swift; sourceTree = "<group>"; };
 		184FB689237EA04E00410DF2 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
+		186A196F2398CFD50085FC33 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
+		186A19712398CFE90085FC33 /* MainSubCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSubCell.swift; sourceTree = "<group>"; };
+		186A19732398DFCB0085FC33 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
+		186A19752398EF8D0085FC33 /* Editor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Editor.swift; sourceTree = "<group>"; };
+		186A19772398F2710085FC33 /* EditorDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorDesign.swift; sourceTree = "<group>"; };
+		186A197A2398F29E0085FC33 /* EditorDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorDetails.swift; sourceTree = "<group>"; };
+		186A197E239903AB0085FC33 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		186A198023990EB50085FC33 /* EditorLRCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorLRCell.swift; sourceTree = "<group>"; };
 		1884C718237BB45600A05B9A /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		1884C71B237BB55A00A05B9A /* Adapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adapter.swift; sourceTree = "<group>"; };
 		1884C744237BD0E400A05B9A /* KnowledgeInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeInstructions.swift; sourceTree = "<group>"; };
@@ -452,6 +468,16 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		186A19792398F2750085FC33 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				186A19752398EF8D0085FC33 /* Editor.swift */,
+				186A19772398F2710085FC33 /* EditorDesign.swift */,
+				186A197A2398F29E0085FC33 /* EditorDetails.swift */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
 		1884C71A237BB52C00A05B9A /* Adapter */ = {
 			isa = PBXGroup;
 			children = (
@@ -466,6 +492,7 @@
 				18A372D0238B88A900F0A1BB /* Record */,
 				1884C744237BD0E400A05B9A /* KnowledgeInstructions.swift */,
 				18A372B9238B744700F0A1BB /* Main.swift */,
+				186A19792398F2750085FC33 /* Editor */,
 				18A372CC238B84C400F0A1BB /* Design.swift */,
 				18A372CA238B812900F0A1BB /* Details.swift */,
 				183E79CE238BB0310031E3A2 /* TabSelectionBar */,
@@ -559,6 +586,8 @@
 				45985A7922ED50BF00FB19F4 /* TabViewController.swift */,
 				45B04B57237DB2F9002B650B /* TabView.swift */,
 				18A3E40522FBBF450010E560 /* TableViewController.swift */,
+				186A19732398DFCB0085FC33 /* EditorViewController.swift */,
+				186A197E239903AB0085FC33 /* EditorView.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -645,7 +674,10 @@
 				183E79DC238BC3710031E3A2 /* HeadCell.swift */,
 				183E7A08238E2C0B0031E3A2 /* BannerCell.swift */,
 				183E7A0A238E2CD60031E3A2 /* BannerSubCell.swift */,
+				186A196F2398CFD50085FC33 /* MainCell.swift */,
+				186A19712398CFE90085FC33 /* MainSubCell.swift */,
 				184F1E5A2397B4DE002E141A /* TitleCell.swift */,
+				186A198023990EB50085FC33 /* EditorLRCell.swift */,
 				183E7A0C238E53CC0031E3A2 /* MineCell */,
 				183E79DE238CFDE20031E3A2 /* ContentCells */,
 			);
@@ -1085,6 +1117,7 @@
 				183E79FC238CFF770031E3A2 /* Content206Cell.swift in Sources */,
 				18A372BA238B744700F0A1BB /* Main.swift in Sources */,
 				18B66B3E2384F2DB00A3126F /* KnowledgeMineCrossCell.swift in Sources */,
+				186A19722398CFE90085FC33 /* MainSubCell.swift in Sources */,
 				183E79E4238CFE4F0031E3A2 /* Content101Cell.swift in Sources */,
 				183E79D3238BB0970031E3A2 /* TabHMCell.swift in Sources */,
 				183E79F6238CFF5E0031E3A2 /* Content203Cell.swift in Sources */,
@@ -1098,6 +1131,7 @@
 				18A372C7238B76EC00F0A1BB /* AddCell.swift in Sources */,
 				183E79F8238CFF650031E3A2 /* Content204Cell.swift in Sources */,
 				183E7A0B238E2CD60031E3A2 /* BannerSubCell.swift in Sources */,
+				186A197B2398F29E0085FC33 /* EditorDetails.swift in Sources */,
 				1884C749237BDDCE00A05B9A /* TableView.swift in Sources */,
 				18B66B51238511AE00A3126F /* LoginUsernameCell.swift in Sources */,
 				183E79D9238BB17D0031E3A2 /* TabHHSMMCell.swift in Sources */,
@@ -1107,6 +1141,7 @@
 				183E7A01238E0F570031E3A2 /* Content300Cell.swift in Sources */,
 				45B04B58237DB2F9002B650B /* TabView.swift in Sources */,
 				18A3E40622FBBF450010E560 /* TableViewController.swift in Sources */,
+				186A198123990EB50085FC33 /* EditorLRCell.swift in Sources */,
 				184FB674237E809D00410DF2 /* KnowledgeHotCell.swift in Sources */,
 				18A372C5238B76D000F0A1BB /* NavSelectionBar.swift in Sources */,
 				183E79EC238CFF2D0031E3A2 /* Content104Cell.swift in Sources */,
@@ -1122,6 +1157,7 @@
 				18911C0122CB4DC6007618B0 /* Home.swift in Sources */,
 				183E79D5238BB0A80031E3A2 /* TabHMMCell.swift in Sources */,
 				18B66B382384E5CC00A3126F /* KnowledgeM3CrossCell.swift in Sources */,
+				186A197F239903AB0085FC33 /* EditorView.swift in Sources */,
 				18A372D2238B88CB00F0A1BB /* Record.swift in Sources */,
 				183E79D0238BB0510031E3A2 /* TabSelectionBar.swift in Sources */,
 				45985A7F22ED51D200FB19F4 /* TabContentCell.swift in Sources */,
@@ -1147,6 +1183,7 @@
 				18911BF522CB4992007618B0 /* Image.swift in Sources */,
 				18B66B3A2384F08E00A3126F /* HeaderCell.swift in Sources */,
 				18C6D9D9237C0C5100BCF77E /* KnowledgeHome.swift in Sources */,
+				186A19702398CFD50085FC33 /* MainCell.swift in Sources */,
 				45985A8122ED885E00FB19F4 /* Menu.swift in Sources */,
 				457E3658230ECBE300D14847 /* Alert.swift in Sources */,
 				1884C74C237BDEFE00A05B9A /* NavTitleCell.swift in Sources */,
@@ -1161,6 +1198,7 @@
 				45985A8322ED894F00FB19F4 /* MenuData.swift in Sources */,
 				18A3E40C22FBC5210010E560 /* MenuCell.swift in Sources */,
 				184FB648237E534C00410DF2 /* KonwledgeAttention.swift in Sources */,
+				186A19762398EF8D0085FC33 /* Editor.swift in Sources */,
 				18911C0722CB51DC007618B0 /* BaseNavigationController.swift in Sources */,
 				18B66B3C2384F0A800A3126F /* KnowledgeMineCell.swift in Sources */,
 				18B66B54238511AE00A3126F /* LoginHeaderCell.swift in Sources */,
@@ -1170,7 +1208,9 @@
 				18A372C9238B77DB00F0A1BB /* AlertTableView.swift in Sources */,
 				184FB688237E9D9300410DF2 /* KnowledgeMessageCell.swift in Sources */,
 				184FB672237E808B00410DF2 /* KnowledgeRecomCell.swift in Sources */,
+				186A19742398DFCB0085FC33 /* EditorViewController.swift in Sources */,
 				18B66B52238511AE00A3126F /* LoginForgetButtonCell.swift in Sources */,
+				186A19782398F2710085FC33 /* EditorDesign.swift in Sources */,
 				183E7A14238E556E0031E3A2 /* MineTabSubCell.swift in Sources */,
 				183E79F2238CFF4F0031E3A2 /* Content201Cell.swift in Sources */,
 				18A372CB238B812900F0A1BB /* Details.swift in Sources */,

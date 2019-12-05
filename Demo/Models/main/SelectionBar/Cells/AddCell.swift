@@ -12,7 +12,7 @@ class AddCell: UITableViewCell {
     
     lazy private var leftButton:UIButton = {
         let a = UIButton()
-        a.setImage(UIImage.init(named: "add"), for: .normal)
+        a.setImage(UIImage.init(named: "m_add"), for: .normal)
         return a
     }()
     let line:UIView = {
@@ -36,7 +36,7 @@ class AddCell: UITableViewCell {
             make.top.equalTo(0)
             make.left.equalTo(0)
             make.right.equalTo(0)
-            make.height.equalTo(0.5)
+            make.height.equalTo(0.3)
 
         }
     
@@ -59,6 +59,9 @@ class AddCell: UITableViewCell {
 class AddCellModel:VueData{
     
     var name:String?
+    override func v_height() -> CGFloat {
+        return 80
+    }
   
 }
 

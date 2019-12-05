@@ -9,6 +9,8 @@
 import UIKit
 import VueSwift
 
+let deleTag = 1000
+let bili:CGFloat = 2.0/3.0
 
 class KnowledgeInstructions: Configuration {
     
@@ -83,6 +85,13 @@ class KnowledgeInstructions: Configuration {
         
         Vue.register(aClass: TitleCellModel.classForCoder(), toClass: TitleCell.classForCoder())
 
+        
+        Vue.register(aClass: MainCellModel.classForCoder(), toClass: MainCell.classForCoder())
+        Vue.register(aClass: MainSubCellModel.classForCoder(), toClass: MainSubCell.classForCoder())
+        Vue.register(aClass: EditorLRCellModel.classForCoder(), toClass: EditorLRCell.classForCoder())
+
+        
+        
         
     }
     

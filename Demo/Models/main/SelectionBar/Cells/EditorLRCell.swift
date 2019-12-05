@@ -1,0 +1,78 @@
+//
+//  EditorLRCell.swift
+//  Demo
+//
+//  Created by apple on 2019/12/5.
+//  Copyright © 2019 test. All rights reserved.
+//
+
+
+import UIKit
+import VueSwift
+class EditorLRCell: UITableViewCell {
+    
+    
+    let headerLabel:UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.textColor = Configuration.instructions.navigtaionTextColor()
+        label.backgroundColor = UIColor.clear
+        return label
+    }()
+    
+    let line:UIView = {
+           let a = UIView()
+           a.backgroundColor = UIColor.lightGray
+           return a
+       }()
+    
+   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = UIColor.clear
+        self.contentView.addSubview(line)
+        self.contentView.addSubview(headerLabel)
+       
+        headerLabel.snp.makeConstraints { (make) in
+        
+            make.top.equalTo(10)
+            make.left.equalTo(12)
+            make.right.equalTo(-12)
+
+        }
+       
+    
+        line.snp.makeConstraints { (make) in
+            make.top.equalTo(0)
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+            make.height.equalTo(0.5)
+
+        }
+    
+    }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    override func setV_Model(_ aModel: VueData) {
+        if aModel is EditorLRCellModel{
+            let m = aModel as! EditorLRCellModel
+           
+            headerLabel.text = m.name
+
+        }
+    }
+    
+}
+class EditorLRCellModel:VueData{
+    
+    var name:String?
+    override func v_height() -> CGFloat {
+        return 50
+    }
+    convenience init(_ a:String) {
+        self.init()
+        self.name = a
+    }
+  
+}
+

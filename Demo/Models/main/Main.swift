@@ -48,10 +48,11 @@ class Main:Vue,V_ViewControllerProtocol{
     }
     private func dealContent(){
 
-       self.arrayContent.append(HeadCellModel())
-      
-        self.arrayContent += App.instance.analysisAppTitles()
+        self.arrayContent.append(HeadCellModel())
         
+//        self.arrayContent += App.instance.analysisAppTitles()
+       
+        self.arrayContent.append(MainCellModel.init(App.instance.analysisAppTitles()))
 
        self.arrayContent.append(AddCellModel())
 
@@ -64,57 +65,65 @@ class Main:Vue,V_ViewControllerProtocol{
         
            let data = self.arrayContent[index] as! VueData
            let number = data.v_identifier
+           let mainModel = self.arrayContent[1] as! MainCellModel
 
            if data is AddCellModel{
-                if self.arrayContent.count >= 7{
-                    
-                    return Alert.show(str: "最多只能创建五个项目原型")
+               if let count = mainModel.array?.count{
+                
+                    if count >= 5{
+                        return Alert.show(str: "最多只能创建五个项目原型")
+
+                    }
+                
                 }
                 
                 Alert.editorContent("请输入项目原型简介"){ (str) in
                     
-                    for value in self.arrayContent{
-                        if value is BriefCellModel{
-                            let m = value as! BriefCellModel
-                            if let n = m.name{
-                                if n == str{
-                                    return Alert.show(str: "项目名称不能相同")
+                    if let arrayContent = mainModel.array{
+                        
+                        for value in arrayContent{
+                            if value is MainSubCellModel{
+                                let m = value as! MainSubCellModel
+                                if let n = m.name{
+                                    if n == str{
+                                        return Alert.show(str: "项目名称不能相同")
 
+                                    }
                                 }
                             }
                         }
-                    }
-                    
-                    self.arrayContent.removeLast()
-                    let a = BriefCellModel()
-                    a.name = str
-                    self.arrayContent.append(a)
-                    self.arrayContent.append(AddCellModel())
+                        
+                        let a = MainSubCellModel()
+                        a.name = str
+                        mainModel.array?.append(a)
 
-                    self.v_array(vId: ARRAYID) { () -> Array<VueData>? in
-                        return self.arrayContent
+                        self.v_array(vId: ARRAYID) { () -> Array<VueData>? in
+                            return self.arrayContent
+                        }
+
+                        self.mainCacheAppTitles()
+                        
                     }
                     
-                    self.mainCacheAppTitles()
                 }
             
-           }else if data is BriefCellModel{
-                 if number == 1{
-                    self.arrayContent.remove(at: index)
+           }else if data is MainCellModel{
+                 if number >= deleTag{
+                    mainModel.array?.remove(at: number - deleTag)
                     self.v_array(vId: ARRAYID) { () -> Array<VueData>? in
                         return self.arrayContent
                     }
                     self.mainCacheAppTitles()
 
                  }else{
-                    
-                    let m = data as! BriefCellModel
+                    let m = mainModel.array?[number] as! MainSubCellModel
                     if let bar = m.data{
 
                         App.instance.tabBar = bar
                         App.instance.name = m.name
                         App.instance.analysisCache()
-                        UIViewController.toHome()
+//                        UIViewController.toHome()
+                        UIViewController.toEditor()
 
 //                        Alert.defaultImageStyle {
 //                            
@@ -155,14 +164,18 @@ class Main:Vue,V_ViewControllerProtocol{
     private func mainCacheAppTitles(){
         
         var titles = [String]()
-        for value in self.arrayContent{
-            if value is BriefCellModel{
-                let m = value as! BriefCellModel
-                if let n = m.name{
-                    titles.append(n)
+        let mainModel = self.arrayContent[1] as! MainCellModel
+        if let array = mainModel.array{
+            for value in array{
+                if value is MainSubCellModel{
+                    let m = value as! MainSubCellModel
+                    if let n = m.name{
+                        titles.append(n)
+                    }
                 }
             }
         }
+        
         App.instance.cacheAppTitles(titles)
 
     }
