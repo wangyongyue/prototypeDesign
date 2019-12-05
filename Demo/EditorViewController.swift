@@ -41,7 +41,7 @@ class EditorViewController: UIViewController {
         table.snp.makeConstraints { (make) in
             
             make.top.equalTo(Adapter.topStatus())
-            make.centerX.equalTo(self.view)
+            make.left.equalTo(0)
             make.width.equalTo(w)
             make.height.equalTo(h - (BOTTOM))
 
@@ -58,7 +58,7 @@ class EditorViewController: UIViewController {
         bottomTable.snp.makeConstraints { (make) in
             
             make.height.equalTo(50)
-            make.centerX.equalTo(self.view)
+            make.left.equalTo(0)
             make.width.equalTo(w)
             make.top.equalTo(table.snp_bottomMargin).offset(0)
             
@@ -92,20 +92,20 @@ class EditorViewController: UIViewController {
         menuTable.v_index(vId: BOTTOMARRAYID, vue: m)
         
         
-        let leftTable = CTable()
-        self.view.addSubview(leftTable)
-        leftTable.backgroundColor = Configuration.instructions.backgroundColor()
-        leftTable.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(Adapter.topStatus())
-            make.right.equalTo(table.snp_leftMargin).offset(-1)
-            make.left.equalTo(0)
-            make.bottom.equalTo(menuTable.snp_topMargin).offset(0)
-            
-        }
-        
-        leftTable.v_array(vId: LEFTARRAYID, vue: m)
-        leftTable.v_index(vId: LEFTINDEXID, vue: m)
+//        let leftTable = CTable()
+//        self.view.addSubview(leftTable)
+//        leftTable.backgroundColor = Configuration.instructions.backgroundColor()
+//        leftTable.snp.makeConstraints { (make) in
+//
+//            make.top.equalTo(Adapter.topStatus())
+//            make.right.equalTo(table.snp_leftMargin).offset(-1)
+//            make.left.equalTo(0)
+//            make.bottom.equalTo(menuTable.snp_topMargin).offset(0)
+//
+//        }
+//
+//        leftTable.v_array(vId: LEFTARRAYID, vue: m)
+//        leftTable.v_index(vId: LEFTINDEXID, vue: m)
         
         let rightTable = CTable()
         self.view.addSubview(rightTable)

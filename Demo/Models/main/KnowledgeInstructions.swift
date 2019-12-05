@@ -10,7 +10,7 @@ import UIKit
 import VueSwift
 
 let deleTag = 1000
-let bili:CGFloat = 2.0/3.0
+let bili:CGFloat = 3.0/4.0
 
 class KnowledgeInstructions: Configuration {
     

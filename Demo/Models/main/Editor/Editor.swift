@@ -21,7 +21,7 @@ class Editor:Vue,V_ViewControllerProtocol{
         dealTabBar()
         dealContent()
         dealMenu()
-        dealLeft()
+//        dealLeft()
         dealRight()
 
     }
