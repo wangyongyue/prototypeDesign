@@ -57,7 +57,7 @@ class Content103Cell: UITableViewCell {
             make.top.equalTo(0)
             make.left.equalTo(0)
             make.right.equalTo(0)
-            make.height.equalTo(260)
+            make.height.equalTo(230)
         }
       
         self.bigenButton.snp.makeConstraints { (make) in
@@ -73,6 +73,30 @@ class Content103Cell: UITableViewCell {
         self.contentView.addGestureRecognizer(tap)
         
     }
+    private func setLayoutForEditor(){
+        
+        
+        self.bigImage.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(0)
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+            make.height.equalTo(180)
+        }
+        
+    }
+    private func setLayoutForSelect(){
+        
+        
+        self.bigImage.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(0)
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+            make.height.equalTo(100)
+        }
+        
+    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -80,6 +104,16 @@ class Content103Cell: UITableViewCell {
         if aModel is Content103CellModel{
             
             let m = aModel as! Content103CellModel
+            Configuration.isHidden(self.deleteButton, m.status)
+            if Configuration.instructions.previewDefault == false{
+                if m.status == .select{
+                   setLayoutForSelect()
+                                        
+                }else{
+                   setLayoutForEditor()
+                }
+                
+            }
             deleteButton.v_click{
                 
                 m.v_identifier = 1
@@ -93,13 +127,13 @@ class Content103Cell: UITableViewCell {
         }
     }
 }
-class Content103CellModel:VueData{
+
+
+class Content103CellModel:BaseData{
     
     var name:String?
-    
     override func v_height() -> CGFloat {
-        
-        return 260
+        return Configuration.getCellHeight(status, 230, 180, 100)
     }
+  
 }
-

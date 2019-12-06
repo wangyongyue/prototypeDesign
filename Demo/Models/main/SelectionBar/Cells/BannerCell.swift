@@ -33,11 +33,12 @@ class BannerCell: UITableViewCell {
         let a = UITapGestureRecognizer()
         return a
     }()
+    let layout = UICollectionViewFlowLayout()
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
                 
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize.init(width: WIDTH - 30, height: WIDTH/2)
+        layout.itemSize = CGSize.init(width: WIDTH - 30, height: 160)
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
@@ -77,6 +78,22 @@ class BannerCell: UITableViewCell {
         
         self.contentView.addGestureRecognizer(tap)
     }
+    
+    
+    
+    private func setLayoutForEditor(){
+        
+        layout.itemSize = CGSize.init(width: WIDTH * bili - 30, height: 120)
+
+    }
+    private func setLayoutForSelect(){
+      
+        layout.itemSize = CGSize.init(width: WIDTH/3 - 20, height: 80)
+
+
+    }
+    
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -98,6 +115,23 @@ class BannerCell: UITableViewCell {
                 m.v_identifier = 0
                 m.v_to()
             }
+            
+            Configuration.isHidden(self.deleteButton, m.status)
+             
+            if Configuration.instructions.previewDefault == false{
+                if m.status == .select{
+                    setLayoutForSelect()
+                    
+                }else{
+                    setLayoutForEditor()
+                }
+                            
+                            
+            }
+            
+            
+            
+            
             deleteButton.v_click{
                 
                 m.v_identifier = 1
@@ -110,14 +144,13 @@ class BannerCell: UITableViewCell {
         }
     }
 }
-class BannerCellModel:VueData{
+
+
+class BannerCellModel:BaseData{
     
     var name:String?
-    
     override func v_height() -> CGFloat {
-        
-        return WIDTH/2
+        return Configuration.getCellHeight(status, 180, 140, 100)
     }
+  
 }
-
-

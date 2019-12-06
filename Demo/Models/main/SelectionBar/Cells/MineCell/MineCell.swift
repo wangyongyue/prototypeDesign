@@ -33,9 +33,8 @@ class MineCell: UITableViewCell {
     lazy private var toDoLabel:UILabel = {
         let a = UILabel()
         a.textAlignment = .left
-        a.font = UIFont.boldSystemFont(ofSize: 12)
         a.textColor = UIColor.lightGray
-        a.text = "数据数据"
+        a.text = "  数据数据"
 
         return a
     }()
@@ -94,10 +93,10 @@ class MineCell: UITableViewCell {
         self.contentView.addSubview(self.zanButton)
         
         self.contentView.addSubview(self.deleteButton)
-
-        
         
         self.contentView.addSubview(self.line)
+        
+       
 
         self.headImage.snp.makeConstraints { (make) in
             
@@ -159,6 +158,108 @@ class MineCell: UITableViewCell {
         
         self.contentView.addGestureRecognizer(tap)
     }
+    func setLayoutForEditor(){
+        
+        self.headImage.layer.cornerRadius = 20
+        self.headImage.layer.masksToBounds = true
+        self.headImage.snp.makeConstraints { (make) in
+             
+             make.top.equalTo(10)
+             make.left.equalTo(12)
+             make.height.equalTo(40)
+             make.width.equalTo(40)
+             
+         }
+        
+        
+         self.nameLabel.snp.makeConstraints { (make) in
+             
+             make.top.equalTo(self.headImage.snp_bottomMargin).offset(20)
+             make.left.equalTo(self.headImage)
+             
+         }
+         self.toDoLabel.snp.makeConstraints { (make) in
+             
+             make.top.equalTo(self.headImage.snp_bottomMargin).offset(20)
+             make.left.equalTo(self.nameLabel.snp_rightMargin).offset(10)
+             
+         }
+         
+        
+         self.zhuanButton.snp.makeConstraints { (make) in
+             
+             make.top.equalTo(self.toDoLabel.snp_bottomMargin).offset(30)
+             make.left.equalTo(self.headImage)
+             
+         }
+         self.pinglunButton.snp.makeConstraints { (make) in
+             
+             make.top.equalTo(self.toDoLabel.snp_bottomMargin).offset(30)
+             make.left.equalTo(self.zhuanButton.snp_rightMargin).offset(30)
+             
+         }
+         self.zanButton.snp.makeConstraints { (make) in
+             
+             make.top.equalTo(self.toDoLabel.snp_bottomMargin).offset(30)
+             make.left.equalTo(self.pinglunButton.snp_rightMargin).offset(30)
+             
+         }
+        
+    }
+    func setLayoutForSelect(){
+        
+        
+        self.headImage.layer.cornerRadius = 15
+        self.headImage.layer.masksToBounds = true
+        self.headImage.snp.makeConstraints { (make) in
+             
+             make.top.equalTo(10)
+             make.left.equalTo(12)
+             make.height.equalTo(30)
+             make.width.equalTo(30)
+             
+         }
+         self.nameLabel.font = Configuration.getFont()
+         self.toDoLabel.font = Configuration.getFont()
+
+         self.nameLabel.snp.makeConstraints { (make) in
+             
+             make.top.equalTo(self.headImage.snp_bottomMargin).offset(10)
+             make.left.equalTo(self.headImage)
+             
+         }
+         self.toDoLabel.snp.makeConstraints { (make) in
+             
+             make.top.equalTo(self.headImage.snp_bottomMargin).offset(10)
+             make.left.equalTo(self.nameLabel.snp_rightMargin).offset(10)
+             
+         }
+         
+        
+         self.zhuanButton.snp.makeConstraints { (make) in
+             
+             make.top.equalTo(self.toDoLabel.snp_bottomMargin).offset(20)
+             make.left.equalTo(self.headImage)
+             
+         }
+         self.pinglunButton.snp.makeConstraints { (make) in
+             
+             make.top.equalTo(self.toDoLabel.snp_bottomMargin).offset(20)
+             make.left.equalTo(self.zhuanButton.snp_rightMargin).offset(20)
+             
+         }
+         self.zanButton.snp.makeConstraints { (make) in
+             
+             make.top.equalTo(self.toDoLabel.snp_bottomMargin).offset(20)
+             make.left.equalTo(self.pinglunButton.snp_rightMargin).offset(20)
+             
+         }
+        
+    }
+    
+    
+    
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -166,6 +267,22 @@ class MineCell: UITableViewCell {
         if aModel is MineCellModel{
             
             let m = aModel as! MineCellModel
+            
+            Configuration.isHidden(self.deleteButton, m.status)
+            if Configuration.instructions.previewDefault == false{
+                
+                if m.status == .select{
+                    
+                    setLayoutForSelect()
+                    
+                }else{
+                    
+                    setLayoutForEditor()
+                }
+            }
+           
+            
+            
             deleteButton.v_click{
                 
                 m.v_identifier = 1
@@ -179,12 +296,12 @@ class MineCell: UITableViewCell {
         }
     }
 }
-class MineCellModel:VueData{
+
+class MineCellModel:BaseData{
     
     var name:String?
-    
     override func v_height() -> CGFloat {
-        
-        return 170
+        return Configuration.getCellHeight(status, 170, 140, 100)
     }
+  
 }

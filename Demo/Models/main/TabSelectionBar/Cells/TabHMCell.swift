@@ -21,7 +21,7 @@ class TabHMCell: UITableViewCell {
     }()
     let image1:UIImageView = {
         let a = UIImageView()
-        a.image = UIImage.init(named: "konw_1")
+        a.image = UIImage.init(named: "z_1")
         a.backgroundColor = UIColor.clear
         return a
     }()
@@ -38,7 +38,7 @@ class TabHMCell: UITableViewCell {
     }()
     let image2:UIImageView = {
         let a = UIImageView()
-        a.image = UIImage.init(named: "konw_1")
+        a.image = UIImage.init(named: "z_1")
         a.backgroundColor = UIColor.clear
         return a
     }()
@@ -63,22 +63,22 @@ class TabHMCell: UITableViewCell {
     
         self.contentView.addSubview(line)
         self.contentView.addGestureRecognizer(self.tap)
-
+        let w = self.contentView.frame.width
         image1.snp.makeConstraints { (make) in
             make.bottom.equalTo(-20)
-            make.centerX.equalTo(Adapter.width()/4)
+            make.centerX.equalTo(w/3)
         }
         label1.snp.makeConstraints { (make) in
             make.bottom.equalTo(0)
-            make.centerX.equalTo(Adapter.width()/4)
+            make.centerX.equalTo(w/3)
         }
         image2.snp.makeConstraints { (make) in
             make.bottom.equalTo(-20)
-            make.centerX.equalTo(Adapter.width()/4*3)
+            make.centerX.equalTo(w/3*2)
         }
         label2.snp.makeConstraints { (make) in
             make.bottom.equalTo(0)
-            make.centerX.equalTo(Adapter.width()/4*3)
+            make.centerX.equalTo(w/3*2)
         }
         
         line.snp.makeConstraints { (make) in
@@ -107,15 +107,13 @@ class TabHMCellModel:BaseData{
     
     var name:String?
     override func v_height() -> CGFloat {
-        if status == .edit{
-            return 50
-        }
-        return 80
+      
+        return Configuration.getCellHeight(status, 50, 80, 50)
     }
   
 }
 class BaseData:VueData{
-    var status:SomponentStatus = .select
+    var status:SomponentStatus = .edit
     convenience  init(_ astatus:SomponentStatus){
         self.init()
         status = astatus

@@ -17,15 +17,28 @@ class NavTitleCell: UITableViewCell {
         label.backgroundColor = UIColor.clear
         return label
     }()
-    
+    let line:UIView = {
+        let a = UIView()
+        a.backgroundColor = UIColor.lightGray
+        return a
+    }()
    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = UIColor.clear
 
         self.contentView.addSubview(headerLabel)
+        self.contentView.addSubview(line)
+
         headerLabel.snp.makeConstraints { (make) in
             
             make.center.equalTo(self.contentView)
+        }
+        line.snp.makeConstraints { (make) in
+            make.bottom.equalTo(-0.5)
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+            make.height.equalTo(0.5)
+
         }
         
     

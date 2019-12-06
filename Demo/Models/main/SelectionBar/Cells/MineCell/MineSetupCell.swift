@@ -12,8 +12,6 @@ class MineSetupCell: UITableViewCell {
     
     lazy private var headImage:UIImageView = {
         let a = UIImageView()
-        a.layer.cornerRadius = 12
-        a.layer.masksToBounds = true
         a.image = UIImage.init(named: "setting")
         return a
     }()
@@ -98,12 +96,32 @@ class MineSetupCell: UITableViewCell {
         
         self.contentView.addGestureRecognizer(tap)
     }
+    private func setLayoutForEditor(){
+        
+    }
+    private func setLayoutForSelect(){
+        self.nameLabel.font = Configuration.getFont()
+           
+    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     override func setV_Model(_ aModel: VueData) {
         if aModel is MineSetupCellModel{
             let m = aModel as! MineSetupCellModel
+
+            Configuration.isHidden(self.deleteButton, m.status)
+            if Configuration.instructions.previewDefault == false{
+
+                if m.status == .select{
+
+                    setLayoutForSelect()
+
+                }else{
+
+                    setLayoutForEditor()
+                }
+            }
             deleteButton.v_click{
                 
                 m.v_identifier = 1
@@ -117,12 +135,12 @@ class MineSetupCell: UITableViewCell {
         }
     }
 }
-class MineSetupCellModel:VueData{
+
+class MineSetupCellModel:BaseData{
     
     var name:String?
-    
     override func v_height() -> CGFloat {
-        
-        return 55
+        return Configuration.getCellHeight(status, 55, 50, 40)
     }
+  
 }

@@ -53,7 +53,7 @@ class Content201Cell: UITableViewCell {
     lazy private var headerLabel:UILabel = {
         let a = UILabel()
         a.textAlignment = .left
-        a.text = "数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据"
+        a.text = "数据数据数据数据数据数据数据数据数据数据数"
         a.numberOfLines = 0
         return a
     }()
@@ -193,6 +193,14 @@ class Content201Cell: UITableViewCell {
         
         self.contentView.addGestureRecognizer(tap)
     }
+    private func setLayoutForEditor(){
+        
+    }
+    private func setLayoutForSelect(){
+        
+        self.headerLabel.font = Configuration.getFont()
+        
+    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -200,6 +208,17 @@ class Content201Cell: UITableViewCell {
         if aModel is Content201CellModel{
             
             let m = aModel as! Content201CellModel
+            
+            Configuration.isHidden(self.deleteButton, m.status)
+            if Configuration.instructions.previewDefault == false{
+                if m.status == .select{
+                   setLayoutForSelect()
+                                        
+                }else{
+                   setLayoutForEditor()
+                }
+                
+            }
             deleteButton.v_click{
                 
                 m.v_identifier = 1
@@ -212,12 +231,12 @@ class Content201Cell: UITableViewCell {
         }
     }
 }
-class Content201CellModel:VueData{
+
+class Content201CellModel:BaseData{
     
     var name:String?
-    
     override func v_height() -> CGFloat {
-        
-        return 170
+        return Configuration.getCellHeight(status, 160, 150, 130)
     }
+  
 }

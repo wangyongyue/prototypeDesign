@@ -31,18 +31,30 @@ class SelectionBar2:Vue,GetViewProtocol{
     private func dealContent(){
         var array = [VueData]()
            
-        array.append(Content106CellModel())
-        array.append(Content101CellModel())
-        array.append(Content102CellModel())
-        array.append(Content104CellModel())
+//        array.append(Content106CellModel())
+//        array.append(Content101CellModel())
+//        array.append(Content102CellModel())
+//        array.append(Content104CellModel())
+//
+//        array.append(Content301CellModel())
+//        array.append(Content302CellModel())
+//        array.append(Content303CellModel())
+//
+//
+//        array.append(Content206CellModel())
+//        array.append(Content103CellModel())
         
-        array.append(Content301CellModel())
-        array.append(Content302CellModel())
-        array.append(Content303CellModel())
         
+        
+        array.append(Content201CellModel(.select))
+        array.append(Content202CellModel(.select))
+        array.append(Content203CellModel(.select))
+        array.append(Content204CellModel(.select))
+        array.append(Content205CellModel(.select))
+        array.append(Content206CellModel(.select))
+                     
+               
 
-        array.append(Content206CellModel())
-        array.append(Content103CellModel())
      
 
        self.v_array(vId: ARRAYID) { () -> Array<VueData>? in
@@ -52,7 +64,9 @@ class SelectionBar2:Vue,GetViewProtocol{
         
          self.v_index(vId: INDEXID) { (index) in
              
-            self.block?(array[index])
+            let a = array[index] as! BaseData
+            a.status = .edit
+            self.block?(a)
 
         }
         

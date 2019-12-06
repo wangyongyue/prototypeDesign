@@ -17,7 +17,7 @@ class EditorViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = Configuration.instructions.backgroundColor()
-        
+
     
         let h = HEIGHT * bili
         let w = WIDTH * bili
@@ -70,7 +70,7 @@ class EditorViewController: UIViewController {
         bottomTable.layer.borderWidth  = 0.3
         
         let menyLayout = UICollectionViewFlowLayout()
-        menyLayout.itemSize = CGSize.init(width: WIDTH/3, height: HEIGHT - h)
+        menyLayout.itemSize = CGSize.init(width: WIDTH/2, height: HEIGHT - h)
         menyLayout.scrollDirection = .horizontal
         menyLayout.minimumLineSpacing = 20
         menyLayout.minimumInteritemSpacing = 0
@@ -113,9 +113,9 @@ class EditorViewController: UIViewController {
         rightTable.snp.makeConstraints { (make) in
             
             make.top.equalTo(Adapter.topStatus())
-            make.left.equalTo(table.snp_rightMargin).offset(1)
+            make.left.equalTo(table.snp_rightMargin).offset(10)
             make.right.equalTo(0)
-            make.bottom.equalTo(menuTable.snp_topMargin).offset(0)
+            make.bottom.equalTo(menuTable.snp_topMargin).offset(-10)
             
         }
         rightTable.v_array(vId: RIGHTARRAYID, vue: m)

@@ -10,8 +10,13 @@ import UIKit
 
 let TOP:CGFloat = 64
 let BOTTOM:CGFloat = 40
-let WIDTH:CGFloat = UIScreen.main.bounds.width
-let HEIGHT:CGFloat = UIScreen.main.bounds.height
+//let WIDTH:CGFloat = UIScreen.main.bounds.width
+//let HEIGHT:CGFloat = UIScreen.main.bounds.height
+//        - width : 375.0
+//        - height : 667.0
+let WIDTH:CGFloat = 375
+let HEIGHT:CGFloat = 667
+
 
 //主体颜色
 let  themeColor = UIColor.init(red: 9/255.0, green: 169/255.0, blue: 159/255.0, alpha: 1.0)
@@ -29,6 +34,39 @@ class Configuration{
     var previewDefault = false //
 
     static let instructions = KnowledgeInstructions()
+    static func isHidden(_ view:UIView,_ a:SomponentStatus){
+        if Configuration.instructions.previewDefault ||  a == .edit{
+            view.isHidden = false
+        }else{
+            
+            view.isHidden = true
+
+        }
+       
+    }
+    static func getCellHeight(_ a:SomponentStatus,_ h1:CGFloat,_ h2:CGFloat,_ h3:CGFloat) -> CGFloat{
+        if Configuration.instructions.previewDefault{
+            return h1
+        }
+        if a == .edit{
+            return h2
+        }
+        return h3
+    }
+    static func getHeight(_ a:SomponentStatus,_ h1:CGFloat,_ h2:CGFloat,_ h3:CGFloat) -> CGFloat{
+        if Configuration.instructions.previewDefault{
+            return h1
+        }
+        if a == .select{
+            return h2
+        }
+        return h3
+    }
+    static func getFont() -> UIFont{
+        
+        return UIFont.systemFont(ofSize: 13)
+    }
+    
     
     func getTabBar() -> UIViewController{
         let tab = BaseTabBarController()

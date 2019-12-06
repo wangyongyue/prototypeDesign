@@ -31,7 +31,7 @@ class EditorDesign:Vue,GetViewProtocol {
    
     private func dealNav(){
         
-        let m = NavMainCellModel()
+        let m = NavTitleCellModel()
         m.name = r.title
         
         self.arrayNav.append(m)

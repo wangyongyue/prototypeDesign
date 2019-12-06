@@ -99,6 +99,7 @@ class Content300Cell: UICollectionViewCell {
         
         self.contentView.addGestureRecognizer(tap)
     }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -107,6 +108,27 @@ class Content300Cell: UICollectionViewCell {
             
             let m = aModel as! Content300CellModel
             headImage.image = m.img
+            
+           if m.status == .select{
+               self.headerLabel.font = Configuration.getFont()
+               self.timeLabel.font = Configuration.getFont()
+               self.headerLabel.snp.makeConstraints { (make) in
+                   
+                   make.top.equalTo(self.headImage.snp_bottomMargin).offset(10)
+                   make.right.equalTo(-12)
+                   make.left.equalTo(12)
+
+               }
+               
+               self.timeLabel.snp.makeConstraints { (make) in
+                   
+                   make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(10)
+                   make.left.equalTo(12)
+                   make.right.equalTo(-12)
+
+               }
+           }
+            
             tap.v_tap {
                 m.v_identifier = 0
                 m.v_to()
@@ -114,7 +136,7 @@ class Content300Cell: UICollectionViewCell {
         }
     }
 }
-class Content300CellModel:VueData{
+class Content300CellModel:BaseData{
     
     var name:String?
     var img:UIImage?
@@ -122,10 +144,14 @@ class Content300CellModel:VueData{
         self.init()
         img = UIImage.init(named: imgName)
     }
+    convenience init(_ imgName:String,_ astatus:SomponentStatus) {
+           self.init()
+           img = UIImage.init(named: imgName)
+           status = astatus
+    }
     
     override func v_height() -> CGFloat {
         
-        return 120
+        return Configuration.getCellHeight(status, 120, 120, 120)
     }
 }
-

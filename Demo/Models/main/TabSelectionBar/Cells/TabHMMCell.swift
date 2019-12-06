@@ -83,30 +83,32 @@ class TabHMMCell: UITableViewCell {
          self.contentView.addSubview(line)
          self.contentView.addGestureRecognizer(self.tap)
 
+        let w = self.contentView.frame.width
+
          image1.snp.makeConstraints { (make) in
              make.bottom.equalTo(-20)
-             make.centerX.equalTo(Adapter.width()/4)
+             make.centerX.equalTo(w/4)
          }
          label1.snp.makeConstraints { (make) in
              make.bottom.equalTo(0)
-             make.centerX.equalTo(Adapter.width()/4)
+             make.centerX.equalTo(w/4)
          }
          image2.snp.makeConstraints { (make) in
              make.bottom.equalTo(-20)
-             make.centerX.equalTo(Adapter.width()/4*3)
+             make.centerX.equalTo(w/4*3)
          }
          label2.snp.makeConstraints { (make) in
              make.bottom.equalTo(0)
-             make.centerX.equalTo(Adapter.width()/4*3)
+             make.centerX.equalTo(w/4*3)
          }
         
          image3.snp.makeConstraints { (make) in
              make.bottom.equalTo(-20)
-             make.centerX.equalTo(Adapter.width()/2)
+             make.centerX.equalTo(w/2)
          }
          label3.snp.makeConstraints { (make) in
              make.bottom.equalTo(0)
-             make.centerX.equalTo(Adapter.width()/2)
+             make.centerX.equalTo(w/2)
          }
          
          line.snp.makeConstraints { (make) in
@@ -133,11 +135,11 @@ class TabHMMCell: UITableViewCell {
      }
     
 }
-class TabHMMCellModel:VueData{
+class TabHMMCellModel:BaseData{
     
     var name:String?
     override func v_height() -> CGFloat {
-        return 80
+        return Configuration.getCellHeight(status, 50, 80, 50)
     }
   
 }

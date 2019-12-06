@@ -32,18 +32,25 @@ class SelectionBar1:Vue,GetViewProtocol{
     private func dealContent(){
         
        var array = [VueData]()
-      array.append(BannerCellModel())
+//       array.append(BannerCellModel())
        
-       array.append(Content201CellModel())
-       array.append(Content202CellModel())
-       array.append(Content105CellModel())
+//       array.append(Content201CellModel())
+//       array.append(Content202CellModel())
+//       array.append(Content105CellModel())
+//
+//       array.append(Content203CellModel())
+//       array.append(Content204CellModel())
+//       array.append(Content205CellModel())
+//
+     
+        array.append(BannerCellModel(.select))
 
-       array.append(Content203CellModel())
-       array.append(Content204CellModel())
-       array.append(Content205CellModel())
-       
-       
-      
+        array.append(Content101CellModel(.select))
+        array.append(Content102CellModel(.select))
+        array.append(Content103CellModel(.select))
+        array.append(Content104CellModel(.select))
+        array.append(Content105CellModel(.select))
+        array.append(Content106CellModel(.select))
 
       
 
@@ -54,7 +61,9 @@ class SelectionBar1:Vue,GetViewProtocol{
         
          
         self.v_index(vId: INDEXID) { (index) in
-            self.block?(array[index])
+            let a = array[index] as! BaseData
+            a.status = .edit
+            self.block?(a)
         }
         
     }

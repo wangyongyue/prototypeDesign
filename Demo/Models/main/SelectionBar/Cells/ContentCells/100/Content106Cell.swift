@@ -84,6 +84,14 @@ class Content106Cell: UITableViewCell {
        
         self.contentView.addGestureRecognizer(tap)
     }
+    private func setLayoutForEditor(){
+        
+    }
+    private func setLayoutForSelect(){
+        self.nameLabel.font = Configuration.getFont()
+        self.timeLabel.font = Configuration.getFont()
+
+    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -91,6 +99,16 @@ class Content106Cell: UITableViewCell {
         if aModel is Content106CellModel{
             
             let m = aModel as! Content106CellModel
+            Configuration.isHidden(self.deleteButton, m.status)
+            if Configuration.instructions.previewDefault == false{
+                if m.status == .select{
+                   setLayoutForSelect()
+                                        
+                }else{
+                   setLayoutForEditor()
+                }
+                
+            }
             deleteButton.v_click{
                 
                 m.v_identifier = 1
@@ -104,12 +122,12 @@ class Content106Cell: UITableViewCell {
         }
     }
 }
-class Content106CellModel:VueData{
+
+class Content106CellModel:BaseData{
     
     var name:String?
-    
     override func v_height() -> CGFloat {
-        
-        return 50
+        return Configuration.getCellHeight(status, 50, 45, 40)
     }
+  
 }

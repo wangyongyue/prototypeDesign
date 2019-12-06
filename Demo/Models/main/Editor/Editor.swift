@@ -28,9 +28,7 @@ class Editor:Vue,V_ViewControllerProtocol{
     private func dealLeft(){
 
         var array = [VueData]()
-        array.append(EditorLRCellModel("返回"))
-        array.append(EditorLRCellModel("返回"))
-
+       
         self.v_array(vId: LEFTARRAYID) { () -> Array<VueData>? in
             
             return array
@@ -44,8 +42,11 @@ class Editor:Vue,V_ViewControllerProtocol{
     private func dealRight(){
 
         var array = [VueData]()
-        array.append(EditorLRCellModel("预览"))
-        array.append(EditorLRCellModel("预览"))
+        array.append(EditorLRCellModel("项目主页","r_1"))
+        array.append(EditorLRCellModel("预览原型","r_2"))
+        array.append(EditorLRCellModel("保存原型","r_3"))
+        array.append(EditorLRCellModel("查看子项","r_4"))
+        array.append(EditorLRCellModel("左右模式","r_5"))
 
         self.v_array(vId: RIGHTARRAYID) { () -> Array<VueData>? in
             
@@ -53,6 +54,25 @@ class Editor:Vue,V_ViewControllerProtocol{
         }
 
         self.v_index(vId: RIGHTINDEXID) { (index) in
+            
+            if index == 0{
+                
+                UIViewController.toMain()
+                
+            }else if index == 1{
+                                
+                UIViewController.toHome()
+                
+            }else if index == 2{
+                App.instance.cache()
+                Alert.show(str: "保存完成")
+                
+            }else if index == 3{
+                Alert.show(str: "开发中")
+            
+            }else if index == 4{
+                Alert.show(str: "开发中")
+            }
         
                      
          }
@@ -60,7 +80,7 @@ class Editor:Vue,V_ViewControllerProtocol{
         
     private func dealTabBar(){
         var array = [VueData]()
-        array.append(TabHMCellModel(.edit))
+        array.append(TabHMCellModel(.select))
         
         self.v_array(vId: BARARRAYID) { () -> Array<VueData>? in
             
@@ -121,12 +141,8 @@ class Editor:Vue,V_ViewControllerProtocol{
                 let d = EditorDesign()
                 d.r.title = "tab\(index + 1)"
                 views.append(d)
-
             }
-            
         }
-       
-      
 
         var contentArray = [VueData]()
         for (index,value) in views.enumerated(){
@@ -135,7 +151,6 @@ class Editor:Vue,V_ViewControllerProtocol{
             if index == 0{
                 m.view?.viewLoad()
                 m.isL = true
-                
             }
             contentArray.append(m)
         }
@@ -154,10 +169,12 @@ class Editor:Vue,V_ViewControllerProtocol{
          let bar1 = SelectionBar1()
          let bar2 = SelectionBar2()
          let bar3 = SelectionBar3()
+         let bar4 = SelectionBarMine()
          views.append(bar1)
          views.append(bar2)
          views.append(bar3)
-         
+         views.append(bar4)
+
         
          bar1.choiceData { (data) in
              

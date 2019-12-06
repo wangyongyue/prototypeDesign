@@ -53,7 +53,7 @@ class Content203Cell: UITableViewCell {
         let a = UILabel()
         a.textAlignment = .left
         a.text = "数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据"
-        a.numberOfLines = 0
+        a.numberOfLines = 1
         return a
     }()
     
@@ -208,13 +208,80 @@ class Content203Cell: UITableViewCell {
         
         self.contentView.addGestureRecognizer(tap)
     }
+    private func setLayoutForEditor(){
+        
+        self.headerLabel.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(self.headImage.snp_bottomMargin).offset(20)
+            make.left.equalTo(self.headImage)
+            make.right.equalTo(-12)
+            
+        }
+        
+        self.bigImage.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(20)
+            make.right.equalTo(-12)
+            make.height.equalTo(70)
+            make.left.equalTo(12)
+            
+        }
+        self.timeLabel.snp.makeConstraints { (make) in
+            
+             make.top.equalTo(self.bigImage.snp_bottomMargin).offset(20)
+             make.left.equalTo(self.headImage)
+           
+            
+        }
+        
+    }
+    private func setLayoutForSelect(){
+        
+        
+        self.headerLabel.font = Configuration.getFont()
+      
+        self.headerLabel.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(self.headImage.snp_bottomMargin).offset(10)
+            make.left.equalTo(self.headImage)
+            make.right.equalTo(-12)
+            
+        }
+        
+        self.bigImage.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(10)
+            make.right.equalTo(-12)
+            make.height.equalTo(40)
+            make.left.equalTo(12)
+            
+        }
+        self.timeLabel.snp.makeConstraints { (make) in
+            
+             make.top.equalTo(self.bigImage.snp_bottomMargin).offset(10)
+             make.left.equalTo(self.headImage)
+           
+            
+        }
+        
+    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     override func setV_Model(_ aModel: VueData) {
-        if aModel is Content202CellModel{
+        if aModel is Content203CellModel{
             
-            let m = aModel as! Content202CellModel
+            let m = aModel as! Content203CellModel
+            Configuration.isHidden(self.deleteButton, m.status)
+            if Configuration.instructions.previewDefault == false{
+                if m.status == .select{
+                   setLayoutForSelect()
+                                        
+                }else{
+                   setLayoutForEditor()
+                }
+                
+            }
             deleteButton.v_click{
                 
                 m.v_identifier = 1
@@ -228,12 +295,12 @@ class Content203Cell: UITableViewCell {
         }
     }
 }
-class Content203CellModel:VueData{
+
+class Content203CellModel:BaseData{
     
     var name:String?
-    
     override func v_height() -> CGFloat {
-        
-        return 270
+        return Configuration.getCellHeight(status, 270, 200, 130)
     }
+  
 }

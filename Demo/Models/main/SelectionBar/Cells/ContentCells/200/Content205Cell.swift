@@ -37,6 +37,7 @@ class Content205Cell: UITableViewCell {
         a.font = UIFont.boldSystemFont(ofSize: 12)
         a.textColor = UIColor.lightGray
         a.text = "数据数据数据数据数据数据数据数据数据数据"
+        a.numberOfLines = 1
 
         return a
     }()
@@ -45,7 +46,7 @@ class Content205Cell: UITableViewCell {
         let a = UILabel()
         a.textAlignment = .left
         a.text = "数据数据数据数据数据数据数据数据数据数据数据数据"
-        a.numberOfLines = 0
+        a.numberOfLines = 1
         return a
     }()
     
@@ -159,13 +160,15 @@ class Content205Cell: UITableViewCell {
             
             make.top.equalTo(self.headImage)
             make.left.equalTo(self.headImage.snp_rightMargin).offset(10)
-            
+            make.right.equalTo(-12)
+
         }
         self.toDoLabel.snp.makeConstraints { (make) in
             
             make.top.equalTo(self.nameLabel.snp_bottomMargin).offset(10)
             make.left.equalTo(self.headImage.snp_rightMargin).offset(10)
-            
+            make.right.equalTo(-12)
+
         }
        
         self.headerLabel.snp.makeConstraints { (make) in
@@ -176,7 +179,7 @@ class Content205Cell: UITableViewCell {
             
         }
         
-        let w = (Adapter.width() - 24 - 10)/3
+        let w = 100
         self.bigImage.snp.makeConstraints { (make) in
             
             make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(20)
@@ -188,43 +191,24 @@ class Content205Cell: UITableViewCell {
         self.bigImage1.snp.makeConstraints { (make) in
             
             make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(20)
-            make.centerX.equalTo(self.contentView)
+            make.left.equalTo(self.bigImage.snp_rightMargin).offset(20)
             make.height.equalTo(w)
             make.width.equalTo(w)
             
         }
         self.bigImage2.snp.makeConstraints { (make) in
-            
+
             make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(20)
-            make.right.equalTo(-12)
+            make.left.equalTo(self.bigImage1.snp_rightMargin).offset(20)
             make.height.equalTo(w)
             make.width.equalTo(w)
-            
+
         }
        
-        self.zhuanButton.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(self.bigImage.snp_bottomMargin).offset(20)
-            make.centerX.equalTo(self.bigImage)
 
-        }
-        self.pinglunButton.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(self.bigImage.snp_bottomMargin).offset(20)
-            make.centerX.equalTo(self.bigImage1)
-            
-        }
-        self.zanButton.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(self.bigImage.snp_bottomMargin).offset(20)
-            make.centerX.equalTo(self.bigImage2)
-
-        }
-        
-        
         self.line.snp.makeConstraints { (make) in
             
-            make.height.equalTo(6)
+            make.height.equalTo(0.3)
             make.left.equalTo(0)
             make.right.equalTo(0)
             make.bottom.equalTo(0)
@@ -233,6 +217,64 @@ class Content205Cell: UITableViewCell {
         
         self.contentView.addGestureRecognizer(tap)
     }
+    private func setLayoutForEditor(){
+        let w = 80
+        self.bigImage.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(20)
+            make.left.equalTo(12)
+            make.height.equalTo(w)
+            make.width.equalTo(w)
+            
+        }
+        self.bigImage1.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(20)
+            make.left.equalTo(self.bigImage.snp_rightMargin).offset(10)
+            make.height.equalTo(w)
+            make.width.equalTo(w)
+            
+        }
+        self.bigImage2.snp.makeConstraints { (make) in
+
+            make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(20)
+            make.left.equalTo(self.bigImage1.snp_rightMargin).offset(10)
+            make.height.equalTo(w)
+            make.width.equalTo(w)
+
+        }
+        
+    }
+    private func setLayoutForSelect(){
+        
+        self.headerLabel.font = Configuration.getFont()
+        let w = 50
+        self.bigImage.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(10)
+            make.left.equalTo(12)
+            make.height.equalTo(w)
+            make.width.equalTo(w)
+            
+        }
+        self.bigImage1.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(10)
+            make.left.equalTo(self.bigImage.snp_rightMargin).offset(10)
+            make.height.equalTo(w)
+            make.width.equalTo(w)
+            
+        }
+        self.bigImage2.snp.makeConstraints { (make) in
+
+            make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(10)
+            make.left.equalTo(self.bigImage1.snp_rightMargin).offset(10)
+            make.height.equalTo(w)
+            make.width.equalTo(w)
+
+        }
+        
+    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -240,6 +282,16 @@ class Content205Cell: UITableViewCell {
         if aModel is Content205CellModel{
             
             let m = aModel as! Content205CellModel
+            Configuration.isHidden(self.deleteButton, m.status)
+            if Configuration.instructions.previewDefault == false{
+                if m.status == .select{
+                   setLayoutForSelect()
+                                        
+                }else{
+                   setLayoutForEditor()
+                }
+                
+            }
             deleteButton.v_click{
                 
                 m.v_identifier = 1
@@ -253,12 +305,12 @@ class Content205Cell: UITableViewCell {
         }
     }
 }
-class Content205CellModel:VueData{
+
+class Content205CellModel:BaseData{
     
     var name:String?
-    
     override func v_height() -> CGFloat {
-        
-        return 300
+        return Configuration.getCellHeight(status, 250, 180, 130)
     }
+  
 }

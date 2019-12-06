@@ -24,7 +24,7 @@ class BannerSubCell: UICollectionViewCell {
     lazy private var headerLabel:UILabel = {
         let a = UILabel()
         a.textAlignment = .left
-        a.text = "数据数据数据数据数据数据数据数据"
+        a.text = ""
         a.textColor = UIColor.white
         a.numberOfLines = 1
         a.font = UIFont.boldSystemFont(ofSize: 15)

@@ -56,7 +56,7 @@ class MineTabSubCell: UICollectionViewCell {
         }
         self.headerLabel.snp.makeConstraints { (make) in
             
-            make.top.equalTo(self.headImage.snp_bottomMargin).offset(20)
+            make.top.equalTo(self.headImage.snp_bottomMargin).offset(10)
             make.left.equalTo(0)
             make.right.equalTo(0)
 
@@ -82,6 +82,9 @@ class MineTabSubCell: UICollectionViewCell {
             let m = aModel as! MineTabSubCellModel
             headImage.image = m.img
             headerLabel.text = m.name
+            if m.status == .select{
+                self.headerLabel.font = Configuration.getFont()
+            }
 
             tap.v_tap {
                 m.v_identifier = 0
@@ -90,7 +93,7 @@ class MineTabSubCell: UICollectionViewCell {
         }
     }
 }
-class MineTabSubCellModel:VueData{
+class MineTabSubCellModel:BaseData{
     
     var name:String?
     var img:UIImage?
@@ -99,10 +102,17 @@ class MineTabSubCellModel:VueData{
         img = UIImage.init(named: imgName)
         name = aname
     }
+    convenience init(_ imgName:String,_ aname:String,_ astatus:SomponentStatus) {
+        self.init()
+        img = UIImage.init(named: imgName)
+        name = aname
+        status = astatus
+    }
     
     override func v_height() -> CGFloat {
         
         return 120
     }
 }
+
 

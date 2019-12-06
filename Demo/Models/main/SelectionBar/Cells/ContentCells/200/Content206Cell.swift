@@ -35,7 +35,7 @@ class Content206Cell: UITableViewCell {
         let a = UILabel()
         a.textAlignment = .left
         a.font = UIFont.boldSystemFont(ofSize: 12)
-        a.textColor = UIColor.red
+        a.textColor = UIColor.lightGray
         a.text = "数据数据"
 
         return a
@@ -46,7 +46,7 @@ class Content206Cell: UITableViewCell {
         a.textAlignment = .left
         a.text = "数据数据数据数据数据数据数据数据数据数据数据数据"
         a.textColor = UIColor.white
-        a.numberOfLines = 0
+        a.numberOfLines = 1
         return a
     }()
     
@@ -145,7 +145,7 @@ class Content206Cell: UITableViewCell {
        
         self.line.snp.makeConstraints { (make) in
             
-            make.height.equalTo(6)
+            make.height.equalTo(0.3)
             make.left.equalTo(0)
             make.right.equalTo(0)
             make.bottom.equalTo(0)
@@ -154,6 +154,31 @@ class Content206Cell: UITableViewCell {
         
         self.contentView.addGestureRecognizer(tap)
     }
+    private func setLayoutForEditor(){
+        
+        self.bigImage.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(self.headImage.snp_bottomMargin).offset(20)
+            make.left.equalTo(12)
+            make.right.equalTo(-12)
+            make.height.equalTo(120)
+
+        }
+        
+    }
+    private func setLayoutForSelect(){
+        
+        self.headerLabel.font = Configuration.getFont()
+        self.bigImage.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(self.headImage.snp_bottomMargin).offset(20)
+            make.left.equalTo(12)
+            make.right.equalTo(-12)
+            make.height.equalTo(70)
+
+        }
+        
+    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -161,6 +186,16 @@ class Content206Cell: UITableViewCell {
         if aModel is Content206CellModel{
             
             let m = aModel as! Content206CellModel
+            Configuration.isHidden(self.deleteButton, m.status)
+            if Configuration.instructions.previewDefault == false{
+                if m.status == .select{
+                   setLayoutForSelect()
+                                        
+                }else{
+                   setLayoutForEditor()
+                }
+                
+            }
             deleteButton.v_click{
                 
                 m.v_identifier = 1
@@ -174,12 +209,12 @@ class Content206Cell: UITableViewCell {
         }
     }
 }
-class Content206CellModel:VueData{
+
+class Content206CellModel:BaseData{
     
     var name:String?
-    
     override func v_height() -> CGFloat {
-        
-        return 260
+        return Configuration.getCellHeight(status, 260, 190, 130)
     }
+  
 }

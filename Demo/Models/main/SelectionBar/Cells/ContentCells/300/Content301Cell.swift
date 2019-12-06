@@ -31,13 +31,14 @@ class Content301Cell: UITableViewCell {
         let a = UITapGestureRecognizer()
         return a
     }()
+    let layout = UICollectionViewFlowLayout()
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         
         
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize.init(width: WIDTH/3, height: WIDTH/3 + 60)
+        layout.itemSize = CGSize.init(width: 160, height: 200)
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
@@ -76,6 +77,16 @@ class Content301Cell: UITableViewCell {
         
         self.contentView.addGestureRecognizer(tap)
     }
+    private func setLayoutForEditor(){
+        
+        layout.itemSize = CGSize.init(width: 130, height: 170)
+
+    }
+    private func setLayoutForSelect(){
+        layout.itemSize = CGSize.init(width: 100, height: 140)
+
+        
+    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -85,11 +96,11 @@ class Content301Cell: UITableViewCell {
             let m = aModel as! Content301CellModel
             
             var array = Array<VueData>()
-            array.append(Content300CellModel(Image.fillImage("feng_7")))
-            array.append(Content300CellModel(Image.fillImage("feng_7")))
-            array.append(Content300CellModel(Image.fillImage("feng_7")))
-            array.append(Content300CellModel(Image.fillImage("feng_7")))
-            array.append(Content300CellModel(Image.fillImage("feng_7")))
+            array.append(Content300CellModel(Image.fillImage("feng_7"),m.status))
+            array.append(Content300CellModel(Image.fillImage("feng_7"),m.status))
+            array.append(Content300CellModel(Image.fillImage("feng_7"),m.status))
+            array.append(Content300CellModel(Image.fillImage("feng_7"),m.status))
+            array.append(Content300CellModel(Image.fillImage("feng_7"),m.status))
             self.m.v_array(vId: ARRAYID) { () -> Array<VueData>? in
                 return array
             }
@@ -98,6 +109,24 @@ class Content301Cell: UITableViewCell {
                 m.v_identifier = 0
                 m.v_to()
             }
+            
+            
+            Configuration.isHidden(self.deleteButton, m.status)
+            if Configuration.instructions.previewDefault == false{
+                if m.status == .select{
+                   setLayoutForSelect()
+                                        
+                }else{
+                   setLayoutForEditor()
+                }
+                
+            }
+            
+            
+            
+            
+            
+            
             deleteButton.v_click{
                 
                 m.v_identifier = 1
@@ -110,13 +139,12 @@ class Content301Cell: UITableViewCell {
         }
     }
 }
-class Content301CellModel:VueData{
+
+class Content301CellModel:BaseData{
     
     var name:String?
-    
     override func v_height() -> CGFloat {
-        
-        return WIDTH/3 + 60
+        return Configuration.getCellHeight(status, 160, 130,  100) + 40
     }
+  
 }
-

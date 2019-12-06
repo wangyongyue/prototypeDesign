@@ -21,7 +21,7 @@ class Content104Cell: UITableViewCell {
         let a = UILabel()
         a.textAlignment = .left
         a.text = "数据数据数据数据"
-        a.numberOfLines = 0
+        a.numberOfLines = 1
         return a
     }()
     
@@ -29,7 +29,7 @@ class Content104Cell: UITableViewCell {
         let a = UILabel()
         a.textAlignment = .left
         a.text = "数据数据数据数据"
-        a.numberOfLines = 0
+        a.numberOfLines = 1
         return a
     }()
    
@@ -91,7 +91,7 @@ class Content104Cell: UITableViewCell {
 
         }
         
-        let w = (Adapter.width() - 24 - 10)/2
+        let w = (WIDTH - 24 - 10)/2
         let h = w/3*2 - 30
 
         self.bigImage.snp.makeConstraints { (make) in
@@ -137,12 +137,86 @@ class Content104Cell: UITableViewCell {
         
         self.contentView.addGestureRecognizer(tap)
     }
+    private func setLayoutForEditor(){
+        
+        let w = (WIDTH * bili - 24 - 10)/2
+        let h = w/3*2 - 30
+
+        self.bigImage.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(10)
+            make.left.equalTo(12)
+            make.height.equalTo(h)
+            make.width.equalTo(w)
+            
+        }
+        self.bigImage1.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(10)
+            make.right.equalTo(-12)
+            make.height.equalTo(h)
+            make.width.equalTo(w)
+            
+        }
+        
+        
+    }
+    private func setLayoutForSelect(){
+        
+        self.headerLabel.font = Configuration.getFont()
+        self.headerLabel1.font = Configuration.getFont()
+
+        let w = (WIDTH/2 - 24 - 10)/2
+        let h = 30
+
+        self.bigImage.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(10)
+            make.left.equalTo(12)
+            make.height.equalTo(h)
+            make.width.equalTo(w)
+            
+        }
+        self.bigImage1.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(10)
+            make.right.equalTo(-12)
+            make.height.equalTo(h)
+            make.width.equalTo(w)
+            
+        }
+        self.headerLabel.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(self.bigImage.snp_bottomMargin).offset(10)
+            make.left.equalTo(self.bigImage)
+            make.right.equalTo(self.bigImage)
+            
+        }
+         self.headerLabel1.snp.makeConstraints { (make) in
+             
+             make.top.equalTo(self.bigImage1.snp_bottomMargin).offset(10)
+             make.left.equalTo(self.bigImage1)
+             make.right.equalTo(self.bigImage1)
+             
+         }
+        
+    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     override func setV_Model(_ aModel: VueData) {
         if aModel is Content104CellModel{
             let m = aModel as! Content104CellModel
+            Configuration.isHidden(self.deleteButton, m.status)
+            if Configuration.instructions.previewDefault == false{
+                if m.status == .select{
+                   setLayoutForSelect()
+                                        
+                }else{
+                   setLayoutForEditor()
+                }
+                
+            }
             deleteButton.v_click{
                 
                 m.v_identifier = 1
@@ -156,15 +230,13 @@ class Content104Cell: UITableViewCell {
         }
     }
 }
-class Content104CellModel:VueData{
+
+class Content104CellModel:BaseData{
     
     var name:String?
-    
     override func v_height() -> CGFloat {
-        let w = (Adapter.width() - 24 - 10)/2
-        let h = w/3*2 - 30 + 50
-        return  h
+        
+        return Configuration.getCellHeight(status, 200, 110, 60)
     }
+  
 }
-
-

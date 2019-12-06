@@ -109,37 +109,39 @@ class TabHHMMCell: UITableViewCell {
          self.contentView.addSubview(line)
          self.contentView.addGestureRecognizer(self.tap)
 
+        let w = self.contentView.frame.width
+
          image1.snp.makeConstraints { (make) in
              make.bottom.equalTo(-20)
-             make.centerX.equalTo(Adapter.width()/8)
+             make.centerX.equalTo(w/8)
          }
          label1.snp.makeConstraints { (make) in
              make.bottom.equalTo(0)
-             make.centerX.equalTo(Adapter.width()/8)
+             make.centerX.equalTo(w/8)
          }
          image2.snp.makeConstraints { (make) in
              make.bottom.equalTo(-20)
-             make.centerX.equalTo(Adapter.width()/8*7)
+             make.centerX.equalTo(w/8*7)
          }
          label2.snp.makeConstraints { (make) in
              make.bottom.equalTo(0)
-             make.centerX.equalTo(Adapter.width()/8*7)
+             make.centerX.equalTo(w/8*7)
          }
         image3.snp.makeConstraints { (make) in
             make.bottom.equalTo(-20)
-            make.centerX.equalTo(Adapter.width()/8*5)
+            make.centerX.equalTo(w/8*5)
         }
         label3.snp.makeConstraints { (make) in
             make.bottom.equalTo(0)
-            make.centerX.equalTo(Adapter.width()/8*5)
+            make.centerX.equalTo(w/8*5)
         }
         image4.snp.makeConstraints { (make) in
             make.bottom.equalTo(-20)
-            make.centerX.equalTo(Adapter.width()/8*3)
+            make.centerX.equalTo(w/8*3)
         }
         label4.snp.makeConstraints { (make) in
             make.bottom.equalTo(0)
-            make.centerX.equalTo(Adapter.width()/8*3)
+            make.centerX.equalTo(w/8*3)
         }
          
          line.snp.makeConstraints { (make) in
@@ -164,12 +166,12 @@ class TabHHMMCell: UITableViewCell {
      }
     
 }
-class TabHHMMCellModel:VueData{
+
+class TabHHMMCellModel:BaseData{
     
     var name:String?
     override func v_height() -> CGFloat {
-        return 80
+        return Configuration.getCellHeight(status, 50, 80, 50)
     }
   
 }
-

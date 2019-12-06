@@ -32,11 +32,13 @@ class MineTabCell: UITableViewCell {
         let a = UITapGestureRecognizer()
         return a
     }()
+    var atable:CCollection?
+    let layout = UICollectionViewFlowLayout()
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
                 
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize.init(width: WIDTH/3, height: 120)
+        layout.itemSize = CGSize.init(width: WIDTH/3, height: 80)
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
@@ -77,6 +79,18 @@ class MineTabCell: UITableViewCell {
         
         self.contentView.addGestureRecognizer(tap)
     }
+   
+    func setLayoutForEditor(){
+        let w = self.contentView.frame.width
+        layout.itemSize = CGSize.init(width: w/3, height: 60)
+
+    }
+    func setLayoutForSelect(){
+          
+        let w = self.contentView.frame.width
+        layout.itemSize = CGSize.init(width: w/3, height: 50)
+
+    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -85,11 +99,25 @@ class MineTabCell: UITableViewCell {
             
             let m = aModel as! MineTabCellModel
             
+            Configuration.isHidden(self.deleteButton, m.status)
+            if Configuration.instructions.previewDefault == false{
+                
+                if m.status == .select{
+                    
+                    setLayoutForSelect()
+                    
+                }else{
+                    
+                    setLayoutForEditor()
+                }
+            }
+            
             var array = Array<VueData>()
-            array.append(MineTabSubCellModel("mine_1","数据数据"))
-            array.append(MineTabSubCellModel("mine_2","数据数据"))
-            array.append(MineTabSubCellModel("mine_3","数据数据"))
-            array.append(MineTabSubCellModel("mine_4","数据数据"))
+            array.append(MineTabSubCellModel("mine_1","数据数据",m.status))
+            array.append(MineTabSubCellModel("mine_2","数据数据",m.status))
+            array.append(MineTabSubCellModel("mine_3","数据数据",m.status))
+            array.append(MineTabSubCellModel("mine_4","数据数据",m.status))
+            
 
             self.m.v_array(vId: ARRAYID) { () -> Array<VueData>? in
                 return array
@@ -111,14 +139,13 @@ class MineTabCell: UITableViewCell {
         }
     }
 }
-class MineTabCellModel:VueData{
+
+class MineTabCellModel:BaseData{
     
     var name:String?
-    
     override func v_height() -> CGFloat {
-        
-        return 240
+        return Configuration.getCellHeight(status, 80*2, 60*2, 50*2)  + 40
     }
+  
 }
-
 

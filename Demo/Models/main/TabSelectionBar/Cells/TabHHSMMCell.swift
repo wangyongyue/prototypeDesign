@@ -125,48 +125,51 @@ class TabHHSMMCell: UITableViewCell {
      
          self.contentView.addSubview(line)
          self.contentView.addGestureRecognizer(self.tap)
+        
+        let w = self.contentView.frame.width
+
 
          image1.snp.makeConstraints { (make) in
              make.bottom.equalTo(-20)
-             make.centerX.equalTo(Adapter.width()/12)
+             make.centerX.equalTo(w/12)
          }
          label1.snp.makeConstraints { (make) in
              make.bottom.equalTo(0)
-             make.centerX.equalTo(Adapter.width()/12)
+             make.centerX.equalTo(w/12)
          }
          image2.snp.makeConstraints { (make) in
              make.bottom.equalTo(-20)
-             make.centerX.equalTo(Adapter.width()/12*11)
+             make.centerX.equalTo(w/12*11)
          }
          label2.snp.makeConstraints { (make) in
              make.bottom.equalTo(0)
-             make.centerX.equalTo(Adapter.width()/12*11)
+             make.centerX.equalTo(w/12*11)
          }
         image3.snp.makeConstraints { (make) in
             make.bottom.equalTo(-20)
-            make.centerX.equalTo(Adapter.width()/12*8.5)
+            make.centerX.equalTo(w/12*8.5)
         }
         label3.snp.makeConstraints { (make) in
             make.bottom.equalTo(0)
-            make.centerX.equalTo(Adapter.width()/12*8.5)
+            make.centerX.equalTo(w/12*8.5)
         }
         image4.snp.makeConstraints { (make) in
             make.bottom.equalTo(-20)
-            make.centerX.equalTo(Adapter.width()/12*3.5)
+            make.centerX.equalTo(w/12*3.5)
         }
         label4.snp.makeConstraints { (make) in
             make.bottom.equalTo(0)
-            make.centerX.equalTo(Adapter.width()/12*3.5)
+            make.centerX.equalTo(w/12*3.5)
         }
         
         
         image5.snp.makeConstraints { (make) in
             make.bottom.equalTo(-20)
-            make.centerX.equalTo(Adapter.width()/12*6)
+            make.centerX.equalTo(w/12*6)
         }
         label5.snp.makeConstraints { (make) in
             make.bottom.equalTo(0)
-            make.centerX.equalTo(Adapter.width()/12*6)
+            make.centerX.equalTo(w/12*6)
         }
          
          line.snp.makeConstraints { (make) in
@@ -191,11 +194,12 @@ class TabHHSMMCell: UITableViewCell {
      }
     
 }
-class TabHHSMMCellModel:VueData{
+
+class TabHHSMMCellModel:BaseData{
     
     var name:String?
     override func v_height() -> CGFloat {
-        return 80
+        return Configuration.getCellHeight(status, 50, 80, 50)
     }
   
 }

@@ -25,7 +25,7 @@ class Content101Cell: UITableViewCell {
         let a = UILabel()
         a.textAlignment = .left
         a.text = "数据数据数据数据"
-        a.numberOfLines = 0
+        a.numberOfLines = 1
         return a
     }()
     
@@ -33,7 +33,7 @@ class Content101Cell: UITableViewCell {
         let a = UILabel()
         a.textAlignment = .left
         a.text = "数据数据数据数据"
-        a.numberOfLines = 0
+        a.numberOfLines = 1
         return a
     }()
     
@@ -42,7 +42,7 @@ class Content101Cell: UITableViewCell {
         let a = UILabel()
         a.textAlignment = .left
         a.text = "数据数据数据数据"
-        a.numberOfLines = 0
+        a.numberOfLines = 1
         return a
     }()
     
@@ -115,12 +115,9 @@ class Content101Cell: UITableViewCell {
 
         }
         
+        let w = (WIDTH - 24 - 15)/3
+        let h = 130
        
-       
-       
-        let w = (Adapter.width() - 24 - 10)/3
-        let h = (Adapter.width() - 24 - 10)/3 + 50
-
         self.bigImage.snp.makeConstraints { (make) in
             
             make.top.equalTo(10)
@@ -167,9 +164,6 @@ class Content101Cell: UITableViewCell {
             
         }
        
-              
-        
-        
         
         self.line.snp.makeConstraints { (make) in
             
@@ -182,6 +176,94 @@ class Content101Cell: UITableViewCell {
         
         self.contentView.addGestureRecognizer(tap)
     }
+     private func setLayoutForEditor(){
+           
+           let w = (WIDTH * bili - 24 - 15)/3
+           let h = 100
+
+           self.bigImage.snp.makeConstraints { (make) in
+               
+               make.top.equalTo(10)
+               make.left.equalTo(12)
+               make.height.equalTo(h)
+               make.width.equalTo(w)
+               
+           }
+           self.bigImage1.snp.makeConstraints { (make) in
+               
+               make.top.equalTo(10)
+               make.centerX.equalTo(self.contentView)
+               make.height.equalTo(h)
+               make.width.equalTo(w)
+               
+           }
+        self.bigImage2.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(10)
+            make.right.equalTo(-12)
+            make.height.equalTo(h)
+            make.width.equalTo(w)
+            
+        }
+           
+           
+       }
+       private func setLayoutForSelect(){
+           
+           self.headerLabel.font = Configuration.getFont()
+           self.headerLabel1.font = Configuration.getFont()
+           self.headerLabel2.font = Configuration.getFont()
+
+           let w = (WIDTH/2 - 24 - 15)/3
+           let h = 70
+
+           self.bigImage.snp.makeConstraints { (make) in
+               
+               make.top.equalTo(10)
+               make.left.equalTo(12)
+               make.height.equalTo(h)
+               make.width.equalTo(w)
+               
+           }
+           self.bigImage1.snp.makeConstraints { (make) in
+               
+               make.top.equalTo(10)
+               make.centerX.equalTo(self.contentView)
+               make.height.equalTo(h)
+               make.width.equalTo(w)
+               
+           }
+        self.bigImage2.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(10)
+            make.right.equalTo(-12)
+            make.height.equalTo(h)
+            make.width.equalTo(w)
+            
+        }
+           self.headerLabel.snp.makeConstraints { (make) in
+               
+               make.top.equalTo(self.bigImage.snp_bottomMargin).offset(10)
+               make.left.equalTo(self.bigImage)
+               make.right.equalTo(self.bigImage)
+               
+           }
+            self.headerLabel1.snp.makeConstraints { (make) in
+                
+                make.top.equalTo(self.bigImage1.snp_bottomMargin).offset(10)
+                make.left.equalTo(self.bigImage1)
+                make.right.equalTo(self.bigImage1)
+                
+            }
+        self.headerLabel2.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(self.bigImage2.snp_bottomMargin).offset(10)
+            make.left.equalTo(self.bigImage2)
+            make.right.equalTo(self.bigImage2)
+            
+        }
+           
+       }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -189,6 +271,15 @@ class Content101Cell: UITableViewCell {
         if aModel is Content101CellModel{
             
             let m = aModel as! Content101CellModel
+            Configuration.isHidden(self.deleteButton, m.status)
+            if Configuration.instructions.previewDefault == false{
+                if m.status == .select{
+                   setLayoutForSelect()
+                }else{
+                   setLayoutForEditor()
+                }
+                
+            }
             deleteButton.v_click{
                 
                 m.v_identifier = 1
@@ -202,12 +293,13 @@ class Content101Cell: UITableViewCell {
         }
     }
 }
-class Content101CellModel:VueData{
+
+class Content101CellModel:BaseData{
     
     var name:String?
-    
     override func v_height() -> CGFloat {
-        
-        return (Adapter.width() - 24 - 10)/3 + 130
+        return Configuration.getCellHeight(status, 190, 160, 100)
+
     }
+  
 }
