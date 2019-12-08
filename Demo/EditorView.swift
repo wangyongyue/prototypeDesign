@@ -13,15 +13,19 @@ import VueSwift
 class EditorView: UIView,ViewLoadProtocol{
 
     var m:Vue?
+    var vues = [Vue]()
+    private let navigation = CTable()
+    private let table = CTable()
     convenience init(_ m:Vue) {
         self.init()
         
         self.m = m
         
+        vues.append(m)
         self.backgroundColor = Configuration.instructions.backgroundColor()
         
         
-        let navigation = CTable()
+        
         self.addSubview(navigation)
         navigation.backgroundColor = Configuration.instructions.navigtaionBackgroundColor()
         navigation.snp.makeConstraints { (make) in
@@ -35,7 +39,7 @@ class EditorView: UIView,ViewLoadProtocol{
         navigation.v_index(vId: NAVINDEXID, vue: m)
         
 
-        let table = CTable()
+        
         self.addSubview(table)
         table.backgroundColor = Configuration.instructions.backgroundColor()
         table.snp.makeConstraints { (make) in
@@ -49,9 +53,7 @@ class EditorView: UIView,ViewLoadProtocol{
         table.v_array(vId: ARRAYID, vue: m)
         table.v_index(vId: INDEXID, vue: m)
         
-        
-        
-        
+                
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -63,6 +65,46 @@ class EditorView: UIView,ViewLoadProtocol{
         m?.v_start()
         
     }
+    func changeModel(_ m:Vue){
+        vues.append(m)
+        
+        self.m = m
+        navigation.v_array(vId: NAVARRAYID, vue: m)
+        navigation.v_index(vId: NAVINDEXID, vue: m)
+        
+        table.v_array(vId: ARRAYID, vue: m)
+        table.v_index(vId: INDEXID, vue: m)
+        m.v_if(vId: BACKXID) { (isF) in
+            if isF{
+                self.backModel()
+            }
+        }
+        self.m?.v_start()
+    }
+    private func backModel(){
+        if vues.count > 0{
+            vues.removeLast()
+        }
+        if vues.count > 0{
+            
+            self.m = vues.last
+            navigation.v_array(vId: NAVARRAYID, vue: vues.last)
+            navigation.v_index(vId: NAVINDEXID, vue: vues.last)
+            
+            table.v_array(vId: ARRAYID, vue: vues.last)
+            table.v_index(vId: INDEXID, vue: vues.last)
+            vues.last?.v_if(vId: INDEXID) { (isF) in
+                if isF{
+                    self.backModel()
+                }
+            }
+            self.m?.v_start()
+        }
+        
+        
+    }
+    
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         

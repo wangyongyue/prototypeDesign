@@ -22,7 +22,7 @@ class MineTabSubCell: UICollectionViewCell {
         let a = UILabel()
         a.textAlignment = .center
         a.font = UIFont.boldSystemFont(ofSize: 14)
-        a.text = "数据数据"
+        a.text = Configuration.getData()
         return a
     }()
    

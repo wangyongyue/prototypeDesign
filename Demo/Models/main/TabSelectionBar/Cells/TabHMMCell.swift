@@ -15,13 +15,15 @@ class TabHMMCell: UITableViewCell {
          a.textAlignment = .center
          a.textColor = Configuration.instructions.navigtaionTextColor()
          a.backgroundColor = UIColor.clear
-         a.text = "tab1"
+         a.text = "Tab1"
          a.font = UIFont.systemFont(ofSize: 13)
          return a
      }()
-     let image1:UIImageView = {
-         let a = UIImageView()
-         a.image = UIImage.init(named: "konw_1")
+     let image1:UIButton = {
+         let a = UIButton()
+         a.setImage(UIImage.init(named: "z_1"), for: .selected)
+         a.setImage(UIImage.init(named: "z_2"), for: .normal)
+
          a.backgroundColor = UIColor.clear
          return a
      }()
@@ -33,12 +35,14 @@ class TabHMMCell: UITableViewCell {
          a.textColor = Configuration.instructions.navigtaionTextColor()
          a.backgroundColor = UIColor.clear
          a.font = UIFont.systemFont(ofSize: 13)
-         a.text = "tab3"
+         a.text = "Tab3"
          return a
      }()
-     let image2:UIImageView = {
-         let a = UIImageView()
-         a.image = UIImage.init(named: "konw_1")
+     let image2:UIButton = {
+         let a = UIButton()
+         a.setImage(UIImage.init(named: "z_1"), for: .selected)
+         a.setImage(UIImage.init(named: "z_2"), for: .normal)
+
          a.backgroundColor = UIColor.clear
          return a
      }()
@@ -49,12 +53,14 @@ class TabHMMCell: UITableViewCell {
         a.textColor = Configuration.instructions.navigtaionTextColor()
         a.backgroundColor = UIColor.clear
         a.font = UIFont.systemFont(ofSize: 13)
-        a.text = "tab2"
+        a.text = "Tab2"
         return a
     }()
-    let image3:UIImageView = {
-        let a = UIImageView()
-        a.image = UIImage.init(named: "konw_1")
+    let image3:UIButton = {
+        let a = UIButton()
+        a.setImage(UIImage.init(named: "z_1"), for: .selected)
+        a.setImage(UIImage.init(named: "z_2"), for: .normal)
+
         a.backgroundColor = UIColor.clear
         return a
     }()
@@ -83,7 +89,7 @@ class TabHMMCell: UITableViewCell {
          self.contentView.addSubview(line)
          self.contentView.addGestureRecognizer(self.tap)
 
-        let w = self.contentView.frame.width
+        let w = Adapter.width()
 
          image1.snp.makeConstraints { (make) in
              make.bottom.equalTo(-20)
@@ -120,7 +126,37 @@ class TabHMMCell: UITableViewCell {
          }
         
        
+        image1.isSelected = true
 
+     }
+     private func setLayoutForSelect(){
+     
+         let w = WIDTH * bili
+        image1.snp.makeConstraints { (make) in
+             make.bottom.equalTo(-20)
+             make.centerX.equalTo(w/4)
+         }
+         label1.snp.makeConstraints { (make) in
+             make.bottom.equalTo(0)
+             make.centerX.equalTo(w/4)
+         }
+         image2.snp.makeConstraints { (make) in
+             make.bottom.equalTo(-20)
+             make.centerX.equalTo(w/4*3)
+         }
+         label2.snp.makeConstraints { (make) in
+             make.bottom.equalTo(0)
+             make.centerX.equalTo(w/4*3)
+         }
+        
+         image3.snp.makeConstraints { (make) in
+             make.bottom.equalTo(-20)
+             make.centerX.equalTo(w/2)
+         }
+         label3.snp.makeConstraints { (make) in
+             make.bottom.equalTo(0)
+             make.centerX.equalTo(w/2)
+         }
      }
      required init?(coder aDecoder: NSCoder) {
          super.init(coder: aDecoder)
@@ -128,9 +164,45 @@ class TabHMMCell: UITableViewCell {
      override func setV_Model(_ aModel: VueData) {
          if aModel is TabHMMCellModel{
              let m = aModel as! TabHMMCellModel
-             tap.v_tap {
-                 m.v_to()
+            if Configuration.instructions.previewDefault == false{
+                if m.status == .select{
+                   setLayoutForSelect()
+                }
+            }
+             if m.status == .edit{
+                 
+                 tap.v_tap {
+                     m.v_identifier = 0
+                     m.v_to()
+                 }
              }
+             image1.v_click { [weak self] in
+                 m.v_identifier = 0
+                 m.v_to()
+                 
+                 self?.image1.isSelected = true
+                 self?.image2.isSelected = false
+                 self?.image3.isSelected = false
+
+             }
+             image2.v_click { [weak self] in
+                 m.v_identifier = 2
+                 m.v_to()
+                 
+                 self?.image1.isSelected = false
+                 self?.image2.isSelected = true
+                 self?.image3.isSelected = false
+
+             }
+            image3.v_click { [weak self] in
+                m.v_identifier = 1
+                m.v_to()
+                
+                self?.image1.isSelected = false
+                self?.image2.isSelected = false
+                self?.image3.isSelected = true
+
+            }
          }
      }
     

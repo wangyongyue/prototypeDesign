@@ -31,7 +31,7 @@ class MineSetupCell: UITableViewCell {
     lazy private var nameLabel:UILabel = {
         let a = UILabel()
         a.textAlignment = .left
-        a.text = "数据数据"
+        a.text = Configuration.getData()
         return a
     }()
     

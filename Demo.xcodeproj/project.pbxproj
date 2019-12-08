@@ -126,6 +126,8 @@
 		18C5FE7C22CF4483003C7EEA /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5FE7B22CF4483003C7EEA /* Configuration.swift */; };
 		18C6D9D9237C0C5100BCF77E /* KnowledgeHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6D9D8237C0C5100BCF77E /* KnowledgeHome.swift */; };
 		18C6D9E1237CE94C00BCF77E /* NavBackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6D9E0237CE94C00BCF77E /* NavBackCell.swift */; };
+		4530F6BE239A9F1100743C55 /* GuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4530F6BD239A9F1100743C55 /* GuideCell.swift */; };
+		455E0E77239BEADF00ED512C /* TabTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455E0E76239BEADF00ED512C /* TabTableCell.swift */; };
 		457E365523097C3700D14847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 457E365423097C3700D14847 /* Assets.xcassets */; };
 		457E3658230ECBE300D14847 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E3657230ECBE300D14847 /* Alert.swift */; };
 		458F053922D6163300271BB4 /* POST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458F053822D6163300271BB4 /* POST.swift */; };
@@ -290,6 +292,8 @@
 		18C6D9E0237CE94C00BCF77E /* NavBackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBackCell.swift; sourceTree = "<group>"; };
 		42A35589383EFA4495DF6002 /* Pods-DemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.release.xcconfig"; path = "Target Support Files/Pods-DemoTests/Pods-DemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		42FFFBDD17AFD3F17E4B29D5 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4530F6BD239A9F1100743C55 /* GuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideCell.swift; sourceTree = "<group>"; };
+		455E0E76239BEADF00ED512C /* TabTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTableCell.swift; sourceTree = "<group>"; };
 		457E365423097C3700D14847 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		457E3657230ECBE300D14847 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		458F053822D6163300271BB4 /* POST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POST.swift; sourceTree = "<group>"; };
@@ -680,6 +684,7 @@
 				186A196F2398CFD50085FC33 /* MainCell.swift */,
 				186A19712398CFE90085FC33 /* MainSubCell.swift */,
 				184F1E5A2397B4DE002E141A /* TitleCell.swift */,
+				4530F6BD239A9F1100743C55 /* GuideCell.swift */,
 				186A198023990EB50085FC33 /* EditorLRCell.swift */,
 				183E7A0C238E53CC0031E3A2 /* MineCell */,
 				183E79DE238CFDE20031E3A2 /* ContentCells */,
@@ -828,6 +833,7 @@
 				45985A7C22ED51C200FB19F4 /* TabHeaderCell.swift */,
 				184FB67D237E917D00410DF2 /* TabHeaderLineCell.swift */,
 				45985A7E22ED51D200FB19F4 /* TabContentCell.swift */,
+				455E0E76239BEADF00ED512C /* TabTableCell.swift */,
 			);
 			path = tabCell;
 			sourceTree = "<group>";
@@ -1138,6 +1144,7 @@
 				1884C749237BDDCE00A05B9A /* TableView.swift in Sources */,
 				18B66B51238511AE00A3126F /* LoginUsernameCell.swift in Sources */,
 				183E79D9238BB17D0031E3A2 /* TabHHSMMCell.swift in Sources */,
+				4530F6BE239A9F1100743C55 /* GuideCell.swift in Sources */,
 				18B66B4F238511AE00A3126F /* LoginVCodeCell.swift in Sources */,
 				183E7A03238E0F790031E3A2 /* Content301Cell.swift in Sources */,
 				18911BF022CB465A007618B0 /* Url.swift in Sources */,
@@ -1209,6 +1216,7 @@
 				18B66B50238511AE00A3126F /* LoginPasswordCell.swift in Sources */,
 				183E79D7238BB1730031E3A2 /* TabHHMMCell.swift in Sources */,
 				18C6D9E1237CE94C00BCF77E /* NavBackCell.swift in Sources */,
+				455E0E77239BEADF00ED512C /* TabTableCell.swift in Sources */,
 				18A372C9238B77DB00F0A1BB /* AlertTableView.swift in Sources */,
 				184FB688237E9D9300410DF2 /* KnowledgeMessageCell.swift in Sources */,
 				184FB672237E808B00410DF2 /* KnowledgeRecomCell.swift in Sources */,
@@ -1402,7 +1410,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 82N4WSYENF;
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1426,7 +1434,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 82N4WSYENF;
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

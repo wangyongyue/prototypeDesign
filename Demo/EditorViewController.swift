@@ -50,6 +50,10 @@ class EditorViewController: UIViewController {
         table.layer.borderWidth  = 0.3
         table.v_array(vId: ARRAYID, vue: m)
         table.v_index(vId: INDEXID, vue: m)
+        m?.v_index(vId: MENUINDEXID, v: { (index) in
+            
+            table.setContentOffset(CGPoint.init(x: w * CGFloat(index), y: 0), animated: false)
+        })
        
       
         let bottomTable = CTable()
@@ -68,9 +72,25 @@ class EditorViewController: UIViewController {
         bottomTable.isScrollEnabled = false
         bottomTable.layer.borderColor = UIColor.lightGray.cgColor
         bottomTable.layer.borderWidth  = 0.3
+                
+
+        let rightTable = CTable()
+        self.view.addSubview(rightTable)
+        rightTable.backgroundColor = Configuration.instructions.backgroundColor()
+        rightTable.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(Adapter.topStatus())
+            make.left.equalTo(table.snp_rightMargin).offset(10)
+            make.right.equalTo(0)
+            make.height.equalTo(table)
+            
+        }
+        rightTable.v_array(vId: RIGHTARRAYID, vue: m)
+        rightTable.v_index(vId: RIGHTINDEXID, vue: m)
+        
         
         let menyLayout = UICollectionViewFlowLayout()
-        menyLayout.itemSize = CGSize.init(width: WIDTH/2, height: HEIGHT - h)
+        menyLayout.itemSize = CGSize.init(width: Adapter.width()/2, height: Adapter.heigt() - h)
         menyLayout.scrollDirection = .horizontal
         menyLayout.minimumLineSpacing = 20
         menyLayout.minimumInteritemSpacing = 0
@@ -86,43 +106,42 @@ class EditorViewController: UIViewController {
         }
         menuTable.layer.borderColor = UIColor.lightGray.cgColor
         menuTable.layer.borderWidth  = 0.3
-        
+        menuTable.backgroundColor = UIColor.init(red: 245/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1.0)
+
         
         menuTable.v_array(vId: BOTTOMARRAYID, vue: m)
-        menuTable.v_index(vId: BOTTOMARRAYID, vue: m)
+        menuTable.v_index(vId: BOTTOMINDEXID, vue: m)
         
-        
-//        let leftTable = CTable()
-//        self.view.addSubview(leftTable)
-//        leftTable.backgroundColor = Configuration.instructions.backgroundColor()
-//        leftTable.snp.makeConstraints { (make) in
-//
-//            make.top.equalTo(Adapter.topStatus())
-//            make.right.equalTo(table.snp_leftMargin).offset(-1)
-//            make.left.equalTo(0)
-//            make.bottom.equalTo(menuTable.snp_topMargin).offset(0)
-//
-//        }
-//
-//        leftTable.v_array(vId: LEFTARRAYID, vue: m)
-//        leftTable.v_index(vId: LEFTINDEXID, vue: m)
-        
-        let rightTable = CTable()
-        self.view.addSubview(rightTable)
-        rightTable.backgroundColor = Configuration.instructions.backgroundColor()
-        rightTable.snp.makeConstraints { (make) in
+        let upButton = UIButton()
+        upButton.setImage(UIImage.init(named: "r_6"), for: .normal)
+        upButton.setImage(UIImage.init(named: "r_7"), for: .selected)
+        self.view.addSubview(upButton)
+        upButton.frame = CGRect.init(x: Adapter.width() - 70, y: h + Adapter.topStatus() - 40, width: 60, height: 60)
+
+        upButton.v_click {
             
-            make.top.equalTo(Adapter.topStatus())
-            make.left.equalTo(table.snp_rightMargin).offset(10)
-            make.right.equalTo(0)
-            make.bottom.equalTo(menuTable.snp_topMargin).offset(-10)
+            upButton.isSelected = !upButton.isSelected
+            let uh:CGFloat = 300.0
+            if upButton.isSelected{
+                
+                menuTable.frame = CGRect.init(x: 0, y: uh, width: Adapter.width(), height: Adapter.heigt() - uh)
+                
+                upButton.frame = CGRect.init(x: Adapter.width() - 70, y: uh - 40, width: 60, height: 60)
+
+                menyLayout.itemSize = CGSize.init(width: Adapter.width()/2, height: Adapter.heigt() - uh)
+
+                
+            }else{
+                upButton.frame = CGRect.init(x: Adapter.width() - 70, y: h + Adapter.topStatus() - 40, width: 60, height: 60)
+
+                menuTable.frame = CGRect.init(x: 0, y: h + Adapter.topStatus() + 5, width: Adapter.width(), height: Adapter.heigt() - h - Adapter.topStatus() - 5)
+
+                menyLayout.itemSize = CGSize.init(width: Adapter.width()/2, height: Adapter.heigt() - h)
+
+            }
             
         }
-        rightTable.v_array(vId: RIGHTARRAYID, vue: m)
-        rightTable.v_index(vId: RIGHTINDEXID, vue: m)
-        
-        
-        
+       
         m?.v_if(vId: STATUSID, v: { (isF) in
             if isF{
                 

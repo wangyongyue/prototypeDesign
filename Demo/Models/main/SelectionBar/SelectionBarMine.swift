@@ -44,9 +44,10 @@ class SelectionBarMine:Vue,GetViewProtocol{
         
          self.v_index(vId: INDEXID) { (index) in
              
-            let a = array[index] as! BaseData
-            a.status = .edit
-            self.block?(a)
+            let a = array[index]
+            if let classType = a.classForCoder as? VueData.Type {
+                self.block?(classType.init())
+            }
 
         }
         

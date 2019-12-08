@@ -22,7 +22,7 @@ class KnowledgeAttentionCell: UITableViewCell {
         let a = UILabel()
         a.textAlignment = .left
         a.font = UIFont.boldSystemFont(ofSize: 12)
-        a.text = "数据数据"
+        a.text = Configuration.getData()
         return a
     }()
     lazy private var toDoLabel:UILabel = {
@@ -30,7 +30,7 @@ class KnowledgeAttentionCell: UITableViewCell {
         a.textAlignment = .left
         a.font = UIFont.boldSystemFont(ofSize: 12)
         a.textColor = UIColor.lightGray
-        a.text = "数据数据"
+        a.text = Configuration.getData()
 
         return a
     }()
@@ -39,21 +39,21 @@ class KnowledgeAttentionCell: UITableViewCell {
         a.textAlignment = .right
         a.font = UIFont.boldSystemFont(ofSize: 12)
         a.textColor = UIColor.lightGray
-        a.text = "5分钟以前"
+        a.text = Configuration.getData()
 
         return a
     }()
     lazy private var headerLabel:UILabel = {
         let a = UILabel()
         a.textAlignment = .left
-        a.text = "真正有突破行的练习，都是集中的，自我批判的，反复的练习。而不是以任务为目的的，以投入量为衡量的。"
+        a.text = Configuration.getData()
         a.numberOfLines = 0
         return a
     }()
     lazy private var conetentLabel:UILabel = {
         let a = UILabel()
         a.textAlignment = .left
-        a.text = "时间应该花在针对性的跨越障碍，和发挥优势上面，才更有效。"
+        a.text = Configuration.getData()
         a.numberOfLines = 0
 
         return a

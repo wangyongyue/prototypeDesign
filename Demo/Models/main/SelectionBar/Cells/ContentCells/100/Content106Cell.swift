@@ -21,7 +21,7 @@ class Content106Cell: UITableViewCell {
         let a = UILabel()
         a.textAlignment = .left
         a.font = UIFont.boldSystemFont(ofSize: 15)
-        a.text = "数据数据"
+        a.text = Configuration.getData()
         return a
     }()
     
@@ -30,7 +30,7 @@ class Content106Cell: UITableViewCell {
         a.textAlignment = .right
         a.font = UIFont.boldSystemFont(ofSize: 15)
         a.textColor = UIColor.lightGray
-        a.text = "数据数据"
+        a.text = Configuration.getData()
 
         return a
     }()

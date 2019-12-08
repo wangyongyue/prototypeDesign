@@ -28,7 +28,7 @@ class Content206Cell: UITableViewCell {
         let a = UILabel()
         a.textAlignment = .left
         a.font = UIFont.boldSystemFont(ofSize: 12)
-        a.text = "数据数据"
+        a.text = Configuration.getData()
         return a
     }()
     lazy private var toDoLabel:UILabel = {
@@ -36,7 +36,7 @@ class Content206Cell: UITableViewCell {
         a.textAlignment = .left
         a.font = UIFont.boldSystemFont(ofSize: 12)
         a.textColor = UIColor.lightGray
-        a.text = "数据数据"
+        a.text = Configuration.getData()
 
         return a
     }()
@@ -44,7 +44,7 @@ class Content206Cell: UITableViewCell {
     lazy private var headerLabel:UILabel = {
         let a = UILabel()
         a.textAlignment = .left
-        a.text = "数据数据数据数据数据数据数据数据数据数据数据数据"
+        a.text = Configuration.getData()
         a.textColor = UIColor.white
         a.numberOfLines = 1
         return a

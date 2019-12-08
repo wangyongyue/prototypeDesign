@@ -25,7 +25,14 @@ protocol GetViewProtocol {
 let STATUSID = "StatusID"
 let RELOADDataID = "ReloadDataID"
 
+let BACKXID = "BackID"
+let CHANGEID = "ChangeID"
+
+
 let SUPERVIEWREMOVE = "SuperViewRemove"
+
+let MENUINDEXID = "MenuIndexID"
+
 
 let RIGHTARRAYID = "RightArrayID"
 let RIGHTINDEXID = "RightIndexID"

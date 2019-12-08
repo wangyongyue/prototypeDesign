@@ -20,7 +20,7 @@ class Content204Cell: UITableViewCell {
     lazy private var nameLabel:UILabel = {
         let a = UILabel()
         a.textAlignment = .left
-        a.text = "数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据"
+        a.text = Configuration.getData()
         a.numberOfLines = 1
         return a
     }()
@@ -30,7 +30,7 @@ class Content204Cell: UITableViewCell {
          a.textAlignment = .right
          a.font = UIFont.boldSystemFont(ofSize: 12)
          a.textColor = UIColor.lightGray
-         a.text = "数据数据"
+         a.text = Configuration.getData()
 
          return a
      }()

@@ -13,19 +13,29 @@ class EditorDesign:Vue,GetViewProtocol {
     var arrayContent = [VueData]()
     var arrayNav = [VueData]()
     var r = Record()
-
+    var editorView:EditorView?
     func getView() -> ViewLoadProtocol {
         let v = EditorView.init(self)
+        self.editorView = v
         return v
     }
-    
+    func reloadData(_ a:VueData){
+        
+        r.array?.removeLast()
+        r.array?.append(a)
+        r.array?.append(GuideCellModel())
+        
+        dealContent()
+
+    }
     
     override func v_start() {
+                
         dealNav()
         dealContent()
         
         r.array = self.arrayContent
-        App.instance.add(r)
+//        App.instance.add(r)
       
     }
    
@@ -39,45 +49,35 @@ class EditorDesign:Vue,GetViewProtocol {
             return self.arrayNav
         }
         self.v_index(vId: NAVINDEXID) { (index) in
-            
-            let data = self.arrayNav[index] as! VueData
-            let number = data.v_identifier
-            if data is AddCellModel{
-                
-                let bar = NavSelectionBar()
-                bar.show { (data) in
-                    
-                    self.arrayNav[index] = data
-                    self.v_if(vId: RELOADDataID) { () -> Bool? in
-                        return true
-                    }
-                }
-            }else{
-                
-                if number == 1{
-                    
-                    UIViewController.toMain()
-                    Alert.show(str: "原型保存完成")
-                }
-                
-            }
-            
+                        
         }
         
     }
+    
     private func dealContent(){
 
       if let array = self.r.array{
         
-          for value in array{
-              self.arrayContent.append(value)
-          }
+        if array.count > 0{
+            self.arrayContent = array
+            if let a = array.last{
+                if a is GuideCellModel{
+                }else{
+                    self.arrayContent.append(GuideCellModel())
+
+                }
+            }
+            
+        }else{
+            self.arrayContent.append(GuideCellModel())
+        }
         
-      }else{
+       }else{
         
-          self.arrayContent.append(AddCellModel())
         
-      }
+        self.arrayContent.append(GuideCellModel())
+        
+       }
       self.v_array(vId: ARRAYID) { () -> Array<VueData>? in
           return self.arrayContent
       }
@@ -86,55 +86,35 @@ class EditorDesign:Vue,GetViewProtocol {
         
            let data = self.arrayContent[index] as! VueData
            let number = data.v_identifier
-           if data is AddCellModel{
-               let bar = SelectionTabBar()
-               bar.show { (data) in
-                
-                    self.arrayContent[index] = data
-                    self.arrayContent.append(AddCellModel())
-                    self.v_array(vId: ARRAYID) { () -> Array<VueData>? in
-                        return self.arrayContent
-                               
-                    }
-                    self.r.array = self.arrayContent
-                              
+           if number == 1{
+            
+                self.arrayContent.remove(at:index)
+                self.v_array(vId: ARRAYID) { () -> Array<VueData>? in
+                    return self.arrayContent
                 }
+                self.r.array = self.arrayContent
+                return
+               
+           }
+           if let r = self.r.record{
+            
+                let m = EditorDetails()
+                m.r = r
+                self.editorView?.changeModel(m)
 
-           
                
            }else{
-               if number == 1{
-                
-                    self.arrayContent.remove(at:index)
-                    self.v_array(vId: ARRAYID) { () -> Array<VueData>? in
-                        return self.arrayContent
-                    }
-                    self.r.array = self.arrayContent
-                    return
-                   
-               }
-               if let r = self.r.record{
-                
-                    let m = Details()
-                    m.r = r
-                    Router.push(m, nil, nil)
-                   
-               }else{
-                    Alert.editorContent("请输入标题"){ (str) in
-                        
-                         let m = Details()
-                         self.r.record = m.r
-                         m.r.title = str
-                         Router.push(m, nil, nil)
-                                          
-                                          
-                    }
-                  
-                
-               }
+                Alert.editorContent("请输入标题"){ (str) in
+                    
+                     let m = EditorDetails()
+                     self.r.record = m.r
+                     m.r.title = str
+                    self.editorView?.changeModel(m)
+                                      
+                                      
+                }
+              
             
-               
-               
            }
           
        }

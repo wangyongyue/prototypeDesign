@@ -62,7 +62,7 @@ class Design:Vue,V_ViewControllerProtocol{
             }else{
                 
                 if number == 1{
-                    
+                    Configuration.instructions.previewDefault = false
                     UIViewController.toEditor()
                 }
                 
@@ -78,10 +78,9 @@ class Design:Vue,V_ViewControllerProtocol{
           for value in array{
               self.arrayContent.append(value)
           }
-        
-      }else{
-        
-          self.arrayContent.append(AddCellModel())
+        if self.arrayContent.count > 0{
+            self.arrayContent.removeLast()
+        }
         
       }
        self.v_array(vId: ARRAYID) { () -> Array<VueData>? in
@@ -112,7 +111,6 @@ class Design:Vue,V_ViewControllerProtocol{
 //
 //
 //            }
-            
            
                
            }else{
@@ -133,15 +131,15 @@ class Design:Vue,V_ViewControllerProtocol{
                     Router.push(m, nil, nil)
                    
                }else{
-                Alert.editorContent("请输入标题"){ (str) in
-                    
-                     let m = Details()
-                     self.r.record = m.r
-                     m.r.title = str
-                     Router.push(m, nil, nil)
-                                      
-                                      
-                }
+//                Alert.editorContent("请输入标题"){ (str) in
+//
+//                     let m = Details()
+//                     self.r.record = m.r
+//                     m.r.title = str
+//                     Router.push(m, nil, nil)
+//
+//
+//                }
                   
                 
                }

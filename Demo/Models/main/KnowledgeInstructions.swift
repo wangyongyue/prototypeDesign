@@ -90,7 +90,9 @@ class KnowledgeInstructions: Configuration {
         Vue.register(aClass: MainSubCellModel.classForCoder(), toClass: MainSubCell.classForCoder())
         Vue.register(aClass: EditorLRCellModel.classForCoder(), toClass: EditorLRCell.classForCoder())
 
-        
+        Vue.register(aClass: GuideCellModel.classForCoder(), toClass: GuideCell.classForCoder())
+        Vue.register(aClass: TabTableCellModel.classForCoder(), toClass: TabTableCell.classForCoder())
+
         
         
     }
@@ -101,16 +103,16 @@ class KnowledgeInstructions: Configuration {
         if let data = App.instance.tabBar{
             if data is TabHMCellModel{
                
-               return createBar(images: ["konw_1","konw_1"], titles: ["tab1","tab2"])
+               return createBar(images: ["konw_1","konw_1"], titles: ["Tab1","Tab2"])
             }else if data is TabHMMCellModel{
                
-               return createBar(images: ["konw_1","konw_1","konw_1"], titles: ["tab1","tab2","tab3"])
+               return createBar(images: ["konw_1","konw_1","konw_1"], titles: ["Tab1","Tab2","Tab3"])
             }else if data is TabHHMMCellModel{
                
-               return createBar(images: ["konw_1","konw_1","konw_1","konw_1"], titles: ["tab1","tab2","tab3","tab4"])
+               return createBar(images: ["konw_1","konw_1","konw_1","konw_1"], titles: ["Tab1","Tab2","Tab3","Tab4"])
             }else if data is TabHHSMMCellModel{
                
-               return createBar(images: ["konw_1","konw_1","konw_1","konw_1","konw_1"], titles: ["tab1","tab2","tab3","tab4","tab5"])
+               return createBar(images: ["konw_1","konw_1","konw_1","konw_1","konw_1"], titles: ["Tab1","Tab2","Tab3","Tab4","Tab5"])
             }
         }
         

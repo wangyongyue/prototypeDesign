@@ -28,6 +28,8 @@ class NavBackCell: UITableViewCell {
         a.backgroundColor = UIColor.lightGray
         return a
     }()
+    let tap = UITapGestureRecognizer()
+
    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -49,13 +51,9 @@ class NavBackCell: UITableViewCell {
         make.centerY.equalTo(self.contentView)
 
     }
-    let tap = UITapGestureRecognizer()
     backImage.isUserInteractionEnabled = true
     backImage.addGestureRecognizer(tap)
-    tap.v_tap {
-        
-        Router.pop(nil)
-    }
+    
     line.snp.makeConstraints { (make) in
         make.bottom.equalTo(-0.5)
         make.left.equalTo(0)
@@ -74,6 +72,9 @@ class NavBackCell: UITableViewCell {
             
             headerLabel.text = m.name
 
+            tap.v_tap {
+                m.v_to()
+            }
         }
     }
     

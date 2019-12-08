@@ -35,5 +35,6 @@ class Cells: NSObject {
         Vue.register(aClass: LoginOutCellModel.classForCoder(), toClass: LoginOutCell.classForCoder())
 
 
+
     }
 }

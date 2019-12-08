@@ -9,31 +9,28 @@
 
 import UIKit
 import VueSwift
-class EditorDetails:Vue,GetViewProtocol{
+class EditorDetails:Vue{
     var arrayNav = [VueData]()
     var arrayContent = [VueData]()
     var r = Record()
-
-    func getView() -> ViewLoadProtocol {
-        let v = TableView.init(self)
-        return v
-    }
     
+    
+    func reloadData(_ a:VueData){
+        
+        r.array?.removeLast()
+        r.array?.append(a)
+        r.array?.append(GuideCellModel())
+        
+        dealContent()
+
+    }
     override func v_start() {
-        dealStatus()
         dealNav()
         dealContent()
       
         r.array = self.arrayContent
     }
-    private func dealStatus(){
-        
-        self.v_if(vId: STATUSID) { () -> Bool? in
-            
-            return false
-        }
-        
-    }
+    
     private func dealNav(){
         
         let m = NavBackCellModel()
@@ -44,20 +41,37 @@ class EditorDetails:Vue,GetViewProtocol{
         }
         self.v_index(vId: NAVINDEXID) { (index) in
             
-           
+            self.v_if(vId: BACKXID) { () -> Bool? in
+                return true
+            }
             
         }
         
     }
     private func dealContent(){
+        
+        
         if let array = self.r.array{
-            for value in array{
-                self.arrayContent.append(value)
-            }
-        }else{
-            
-            self.arrayContent.append(AddCellModel())
+         
+         if array.count > 0{
+             self.arrayContent = array
+             if let a = array.last{
+                 if a is GuideCellModel{
+                 }else{
+                     self.arrayContent.append(GuideCellModel())
 
+                 }
+             }
+             
+         }else{
+            
+             self.arrayContent.append(GuideCellModel())
+         }
+         
+        }else{
+        
+            self.arrayContent.append(GuideCellModel())
+         
         }
       
        self.v_array(vId: ARRAYID) { () -> Array<VueData>? in

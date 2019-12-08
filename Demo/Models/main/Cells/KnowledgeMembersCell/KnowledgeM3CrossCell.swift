@@ -22,7 +22,7 @@ class KnowledgeM3CrossCell: UICollectionViewCell {
     lazy private var headerLabel:UILabel = {
         let a = UILabel()
         a.textAlignment = .left
-        a.text = "数据数据数据数据数据"
+        a.text = Configuration.getData()
         a.numberOfLines = 1
         a.font = UIFont.boldSystemFont(ofSize: 13)
         return a
@@ -31,7 +31,7 @@ class KnowledgeM3CrossCell: UICollectionViewCell {
     lazy private var timeLabel:UILabel = {
            let a = UILabel()
            a.textAlignment = .left
-           a.text = "数据数据数据数据数据"
+           a.text = Configuration.getData()
            a.numberOfLines = 1
            a.textColor = UIColor.lightGray
            a.font = UIFont.boldSystemFont(ofSize: 13)

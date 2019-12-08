@@ -30,7 +30,6 @@ class TabContentCell: UICollectionViewCell {
                     make.left.equalTo(0)
                     make.right.equalTo(0)
                     make.bottom.equalTo(0)
-                    
                 }
             }
             

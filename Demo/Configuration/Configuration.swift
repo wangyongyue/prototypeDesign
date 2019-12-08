@@ -35,12 +35,16 @@ class Configuration{
 
     static let instructions = KnowledgeInstructions()
     static func isHidden(_ view:UIView,_ a:SomponentStatus){
-        if Configuration.instructions.previewDefault ||  a == .edit{
+        
+        
+        if a == .edit{
             view.isHidden = false
-        }else{
             
+        }else{
             view.isHidden = true
-
+        }
+        if Configuration.instructions.previewDefault{
+            view.isHidden = true
         }
        
     }
@@ -66,7 +70,10 @@ class Configuration{
         
         return UIFont.systemFont(ofSize: 13)
     }
-    
+    static func getData() -> String{
+        
+        return "Data"
+    }
     
     func getTabBar() -> UIViewController{
         let tab = BaseTabBarController()

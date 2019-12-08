@@ -15,13 +15,15 @@ class TabHHMMCell: UITableViewCell {
          a.textAlignment = .center
          a.textColor = Configuration.instructions.navigtaionTextColor()
          a.backgroundColor = UIColor.clear
-         a.text = "tab1"
+         a.text = "Tab1"
          a.font = UIFont.systemFont(ofSize: 13)
          return a
      }()
-     let image1:UIImageView = {
-         let a = UIImageView()
-         a.image = UIImage.init(named: "konw_1")
+     let image1:UIButton = {
+         let a = UIButton()
+         a.setImage(UIImage.init(named: "z_1"), for: .selected)
+         a.setImage(UIImage.init(named: "z_2"), for: .normal)
+
          a.backgroundColor = UIColor.clear
          return a
      }()
@@ -33,12 +35,14 @@ class TabHHMMCell: UITableViewCell {
          a.textColor = Configuration.instructions.navigtaionTextColor()
          a.backgroundColor = UIColor.clear
          a.font = UIFont.systemFont(ofSize: 13)
-         a.text = "tab4"
+         a.text = "Tab4"
          return a
      }()
-     let image2:UIImageView = {
-         let a = UIImageView()
-         a.image = UIImage.init(named: "konw_1")
+     let image2:UIButton = {
+         let a = UIButton()
+         a.setImage(UIImage.init(named: "z_1"), for: .selected)
+         a.setImage(UIImage.init(named: "z_2"), for: .normal)
+
          a.backgroundColor = UIColor.clear
          return a
      }()
@@ -49,12 +53,14 @@ class TabHHMMCell: UITableViewCell {
         a.textColor = Configuration.instructions.navigtaionTextColor()
         a.backgroundColor = UIColor.clear
         a.font = UIFont.systemFont(ofSize: 13)
-        a.text = "tab3"
+        a.text = "Tab3"
         return a
     }()
-    let image3:UIImageView = {
-        let a = UIImageView()
-        a.image = UIImage.init(named: "konw_1")
+    let image3:UIButton = {
+        let a = UIButton()
+        a.setImage(UIImage.init(named: "z_1"), for: .selected)
+        a.setImage(UIImage.init(named: "z_2"), for: .normal)
+
         a.backgroundColor = UIColor.clear
         return a
     }()
@@ -67,12 +73,14 @@ class TabHHMMCell: UITableViewCell {
         a.textColor = Configuration.instructions.navigtaionTextColor()
         a.backgroundColor = UIColor.clear
         a.font = UIFont.systemFont(ofSize: 13)
-        a.text = "tab2"
+        a.text = "Tab2"
         return a
     }()
-    let image4:UIImageView = {
-        let a = UIImageView()
-        a.image = UIImage.init(named: "konw_1")
+    let image4:UIButton = {
+        let a = UIButton()
+        a.setImage(UIImage.init(named: "z_1"), for: .selected)
+        a.setImage(UIImage.init(named: "z_2"), for: .normal)
+
         a.backgroundColor = UIColor.clear
         return a
     }()
@@ -109,7 +117,7 @@ class TabHHMMCell: UITableViewCell {
          self.contentView.addSubview(line)
          self.contentView.addGestureRecognizer(self.tap)
 
-        let w = self.contentView.frame.width
+        let w = Adapter.width()
 
          image1.snp.makeConstraints { (make) in
              make.bottom.equalTo(-20)
@@ -151,17 +159,111 @@ class TabHHMMCell: UITableViewCell {
              make.height.equalTo(0.5)
 
          }
-     
+     image1.isSelected = true
+
      }
+   
+    private func setLayoutForSelect(){
+        
+        let w = WIDTH * bili
+
+         image1.snp.makeConstraints { (make) in
+             make.bottom.equalTo(-20)
+             make.centerX.equalTo(w/8)
+         }
+         label1.snp.makeConstraints { (make) in
+             make.bottom.equalTo(0)
+             make.centerX.equalTo(w/8)
+         }
+         image2.snp.makeConstraints { (make) in
+             make.bottom.equalTo(-20)
+             make.centerX.equalTo(w/8*7)
+         }
+         label2.snp.makeConstraints { (make) in
+             make.bottom.equalTo(0)
+             make.centerX.equalTo(w/8*7)
+         }
+        image3.snp.makeConstraints { (make) in
+            make.bottom.equalTo(-20)
+            make.centerX.equalTo(w/8*5)
+        }
+        label3.snp.makeConstraints { (make) in
+            make.bottom.equalTo(0)
+            make.centerX.equalTo(w/8*5)
+        }
+        image4.snp.makeConstraints { (make) in
+            make.bottom.equalTo(-20)
+            make.centerX.equalTo(w/8*3)
+        }
+        label4.snp.makeConstraints { (make) in
+            make.bottom.equalTo(0)
+            make.centerX.equalTo(w/8*3)
+        }
+        
+    }
      required init?(coder aDecoder: NSCoder) {
          super.init(coder: aDecoder)
      }
      override func setV_Model(_ aModel: VueData) {
          if aModel is TabHHMMCellModel{
              let m = aModel as! TabHHMMCellModel
-             tap.v_tap {
-                 m.v_to()
+            
+            if Configuration.instructions.previewDefault == false{
+                if m.status == .select{
+                   setLayoutForSelect()
+                }
+            }
+            
+            
+             if m.status == .edit{
+                 
+                 tap.v_tap {
+                     m.v_identifier = 0
+                     m.v_to()
+                 }
              }
+             image1.v_click { [weak self] in
+                  m.v_identifier = 0
+                  m.v_to()
+                  
+                  self?.image1.isSelected = true
+                  self?.image2.isSelected = false
+                  self?.image3.isSelected = false
+                  self?.image4.isSelected = false
+
+              }
+              image2.v_click { [weak self] in
+                  m.v_identifier = 3
+                  m.v_to()
+                  
+                  self?.image1.isSelected = false
+                  self?.image2.isSelected = true
+                  self?.image3.isSelected = false
+                  self?.image4.isSelected = false
+
+              }
+             image3.v_click { [weak self] in
+                 m.v_identifier = 2
+                 m.v_to()
+                 
+                 self?.image1.isSelected = false
+                 self?.image2.isSelected = false
+                 self?.image3.isSelected = true
+                 self?.image4.isSelected = false
+
+
+             }
+            image4.v_click { [weak self] in
+                m.v_identifier = 2
+                m.v_to()
+                
+                self?.image1.isSelected = false
+                self?.image2.isSelected = false
+                self?.image3.isSelected = false
+                self?.image4.isSelected = true
+
+
+            }
          }
      }
     

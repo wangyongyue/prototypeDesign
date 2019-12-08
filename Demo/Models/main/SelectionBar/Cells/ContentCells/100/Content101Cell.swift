@@ -24,7 +24,7 @@ class Content101Cell: UITableViewCell {
     lazy private var headerLabel:UILabel = {
         let a = UILabel()
         a.textAlignment = .left
-        a.text = "数据数据数据数据"
+        a.text = Configuration.getData()
         a.numberOfLines = 1
         return a
     }()
@@ -32,7 +32,7 @@ class Content101Cell: UITableViewCell {
     lazy private var headerLabel1:UILabel = {
         let a = UILabel()
         a.textAlignment = .left
-        a.text = "数据数据数据数据"
+        a.text = Configuration.getData()
         a.numberOfLines = 1
         return a
     }()
@@ -41,7 +41,7 @@ class Content101Cell: UITableViewCell {
     lazy private var headerLabel2:UILabel = {
         let a = UILabel()
         a.textAlignment = .left
-        a.text = "数据数据数据数据"
+        a.text = Configuration.getData()
         a.numberOfLines = 1
         return a
     }()

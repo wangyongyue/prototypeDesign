@@ -45,7 +45,8 @@ class Details:Vue,V_ViewControllerProtocol{
         }
         self.v_index(vId: NAVINDEXID) { (index) in
             
-           
+           Router.pop(nil)
+
             
         }
         
@@ -55,10 +56,9 @@ class Details:Vue,V_ViewControllerProtocol{
             for value in array{
                 self.arrayContent.append(value)
             }
-        }else{
-            
-            self.arrayContent.append(AddCellModel())
-
+            if self.arrayContent.count > 0{
+                self.arrayContent.removeLast()
+            }
         }
       
        self.v_array(vId: ARRAYID) { () -> Array<VueData>? in
@@ -106,15 +106,15 @@ class Details:Vue,V_ViewControllerProtocol{
                      Router.push(m, nil, nil)
                     
                 }else{
-                    Alert.editorContent("请输入标题"){ (str) in
-
-                         let m = Details()
-                         self.r.record = m.r
-                         m.r.title = str
-                         Router.push(m, nil, nil)
-                                          
-                                          
-                    }
+//                    Alert.editorContent("请输入标题"){ (str) in
+//
+//                         let m = Details()
+//                         self.r.record = m.r
+//                         m.r.title = str
+//                         Router.push(m, nil, nil)
+//
+//
+//                    }
                  
                 }
                 
