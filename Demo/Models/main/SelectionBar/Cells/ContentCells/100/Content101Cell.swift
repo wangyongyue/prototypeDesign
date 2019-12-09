@@ -177,10 +177,9 @@ class Content101Cell: UITableViewCell {
         self.contentView.addGestureRecognizer(tap)
     }
      private func setLayoutForEditor(){
-           
+
            let w = (WIDTH * bili - 24 - 15)/3
            let h = 100
-
            self.bigImage.snp.makeConstraints { (make) in
                
                make.top.equalTo(10)
@@ -214,8 +213,13 @@ class Content101Cell: UITableViewCell {
            self.headerLabel1.font = Configuration.getFont()
            self.headerLabel2.font = Configuration.getFont()
 
-           let w = (WIDTH/2 - 24 - 15)/3
-           let h = 70
+           var w = (WIDTH/2 - 24 - 15)/3
+           var h = 70
+           if Adapter.isPad(){
+                w = (WIDTHPAD - 24 - 15)/3
+                h = 100
+           }
+        
 
            self.bigImage.snp.makeConstraints { (make) in
                
@@ -298,7 +302,7 @@ class Content101CellModel:BaseData{
     
     var name:String?
     override func v_height() -> CGFloat {
-        return Configuration.getCellHeight(status, 190, 160, 100)
+        return Configuration.getCellHeight(status, 190, 160, Adapter.Pad(160, 100))
 
     }
   

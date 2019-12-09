@@ -112,9 +112,11 @@ class Content300Cell: UICollectionViewCell {
            if m.status == .select{
                self.headerLabel.font = Configuration.getFont()
                self.timeLabel.font = Configuration.getFont()
+            
+               
                self.headerLabel.snp.makeConstraints { (make) in
                    
-                   make.top.equalTo(self.headImage.snp_bottomMargin).offset(10)
+                make.top.equalTo(self.headImage.snp_bottomMargin).offset(Adapter.Pad(15, 10))
                    make.right.equalTo(-12)
                    make.left.equalTo(12)
 
@@ -122,7 +124,7 @@ class Content300Cell: UICollectionViewCell {
                
                self.timeLabel.snp.makeConstraints { (make) in
                    
-                   make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(10)
+                   make.top.equalTo(self.headerLabel.snp_bottomMargin).offset(Adapter.Pad(15, 10))
                    make.left.equalTo(12)
                    make.right.equalTo(-12)
 

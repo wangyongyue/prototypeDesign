@@ -63,6 +63,7 @@
 		184FB686237E9B2300410DF2 /* KnowledgeMembersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184FB685237E9B2300410DF2 /* KnowledgeMembersCell.swift */; };
 		184FB688237E9D9300410DF2 /* KnowledgeMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184FB687237E9D9300410DF2 /* KnowledgeMessageCell.swift */; };
 		184FB68A237EA04E00410DF2 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184FB689237EA04E00410DF2 /* TodoCell.swift */; };
+		185FF51A239E38D900AFB96E /* EditorPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185FF519239E38D900AFB96E /* EditorPadViewController.swift */; };
 		186A19702398CFD50085FC33 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186A196F2398CFD50085FC33 /* MainCell.swift */; };
 		186A19722398CFE90085FC33 /* MainSubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186A19712398CFE90085FC33 /* MainSubCell.swift */; };
 		186A19742398DFCB0085FC33 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186A19732398DFCB0085FC33 /* EditorViewController.swift */; };
@@ -221,6 +222,7 @@
 		184FB685237E9B2300410DF2 /* KnowledgeMembersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeMembersCell.swift; sourceTree = "<group>"; };
 		184FB687237E9D9300410DF2 /* KnowledgeMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeMessageCell.swift; sourceTree = "<group>"; };
 		184FB689237EA04E00410DF2 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
+		185FF519239E38D900AFB96E /* EditorPadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorPadViewController.swift; sourceTree = "<group>"; };
 		186A196F2398CFD50085FC33 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 		186A19712398CFE90085FC33 /* MainSubCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSubCell.swift; sourceTree = "<group>"; };
 		186A19732398DFCB0085FC33 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
@@ -593,6 +595,7 @@
 				45B04B57237DB2F9002B650B /* TabView.swift */,
 				18A3E40522FBBF450010E560 /* TableViewController.swift */,
 				186A19732398DFCB0085FC33 /* EditorViewController.swift */,
+				185FF519239E38D900AFB96E /* EditorPadViewController.swift */,
 				186A197E239903AB0085FC33 /* EditorView.swift */,
 			);
 			name = ViewControllers;
@@ -1188,6 +1191,7 @@
 				45985A7A22ED50BF00FB19F4 /* TabViewController.swift in Sources */,
 				183E7A10238E53F70031E3A2 /* MineTabCell.swift in Sources */,
 				18A372C3238B76C800F0A1BB /* SelectionBar.swift in Sources */,
+				185FF51A239E38D900AFB96E /* EditorPadViewController.swift in Sources */,
 				18B66B452385118A00A3126F /* Registered.swift in Sources */,
 				183E7A16238E69710031E3A2 /* SelectionBar1.swift in Sources */,
 				18911BF522CB4992007618B0 /* Image.swift in Sources */,
@@ -1422,7 +1426,7 @@
 				PRODUCT_NAME = "点点原型";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1446,7 +1450,7 @@
 				PRODUCT_NAME = "点点原型";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

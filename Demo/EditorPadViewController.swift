@@ -1,16 +1,15 @@
 //
-//  EditorViewController.swift
+//  EditorPadViewController.swift
 //  Demo
 //
-//  Created by apple on 2019/12/5.
+//  Created by apple on 2019/12/9.
 //  Copyright © 2019 test. All rights reserved.
 //
-
 
 import UIKit
 import VueSwift
 
-class EditorViewController: UIViewController {
+class EditorPadViewController: UIViewController {
 
     var m:Vue?
     override func viewDidLoad() {
@@ -19,8 +18,8 @@ class EditorViewController: UIViewController {
         self.view.backgroundColor = Configuration.instructions.backgroundColor()
 
     
-        let h = HEIGHT * bili
-        let w = WIDTH * bili
+        let h = HEIGHTPAD
+        let w = WIDTHPAD
 
         let style = UIView()
         style.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 20)
@@ -30,7 +29,7 @@ class EditorViewController: UIViewController {
         
         
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize.init(width: w, height: h - (50))
+        layout.itemSize = CGSize.init(width: w, height: h - (BOTTOM))
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
@@ -43,7 +42,7 @@ class EditorViewController: UIViewController {
             make.top.equalTo(Adapter.topStatus())
             make.left.equalTo(0)
             make.width.equalTo(w)
-            make.height.equalTo(h - (50))
+            make.height.equalTo(h - 50)
 
         }
         table.layer.borderColor = UIColor.lightGray.cgColor
@@ -90,7 +89,7 @@ class EditorViewController: UIViewController {
         
         
         let menyLayout = UICollectionViewFlowLayout()
-        menyLayout.itemSize = CGSize.init(width: Adapter.width()/2, height: Adapter.heigt() - h - Adapter.topStatus())
+        menyLayout.itemSize = CGSize.init(width: WIDTHPAD, height: Adapter.heigt() - h - Adapter.topStatus())
         menyLayout.scrollDirection = .horizontal
         menyLayout.minimumLineSpacing = 20
         menyLayout.minimumInteritemSpacing = 0
@@ -112,36 +111,7 @@ class EditorViewController: UIViewController {
         menuTable.v_array(vId: BOTTOMARRAYID, vue: m)
         menuTable.v_index(vId: BOTTOMINDEXID, vue: m)
         
-        let upButton = UIButton()
-        upButton.setImage(UIImage.init(named: "r_6"), for: .normal)
-        upButton.setImage(UIImage.init(named: "r_7"), for: .selected)
-        self.view.addSubview(upButton)
-        upButton.frame = CGRect.init(x: Adapter.width() - 80, y: h + Adapter.topStatus() - 50, width: 60, height: 60)
-
-        upButton.v_click {
-            
-            upButton.isSelected = !upButton.isSelected
-            let uh:CGFloat = 300.0
-            if upButton.isSelected{
-                
-                menuTable.frame = CGRect.init(x: 0, y: uh, width: Adapter.width(), height: Adapter.heigt() - uh)
-                
-                upButton.frame = CGRect.init(x: Adapter.width() - 80, y: uh - 50, width: 60, height: 60)
-
-                menyLayout.itemSize = CGSize.init(width: Adapter.width()/2, height: Adapter.heigt() - uh)
-
-                
-            }else{
-                upButton.frame = CGRect.init(x: Adapter.width() - 80, y: h + Adapter.topStatus() - 50, width: 60, height: 60)
-
-                menuTable.frame = CGRect.init(x: 0, y: h + Adapter.topStatus() - 5, width: Adapter.width(), height: Adapter.heigt() - h - Adapter.topStatus())
-            
-
-                menyLayout.itemSize = CGSize.init(width: Adapter.width()/2, height: Adapter.heigt() - h - Adapter.topStatus())
-
-            }
-            
-        }
+       
        
         m?.v_if(vId: STATUSID, v: { (isF) in
             if isF{

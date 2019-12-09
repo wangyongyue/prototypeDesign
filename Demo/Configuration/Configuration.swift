@@ -17,6 +17,9 @@ let BOTTOM:CGFloat = 40
 let WIDTH:CGFloat = 375
 let HEIGHT:CGFloat = 667
 
+let HEIGHTPAD:CGFloat = 667
+let WIDTHPAD:CGFloat = 375
+
 
 //主体颜色
 let  themeColor = UIColor.init(red: 9/255.0, green: 169/255.0, blue: 159/255.0, alpha: 1.0)
@@ -55,6 +58,10 @@ class Configuration{
         if a == .edit{
             return h2
         }
+        if Adapter.isPad(){
+            return h2
+
+        }
         return h3
     }
     static func getHeight(_ a:SomponentStatus,_ h1:CGFloat,_ h2:CGFloat,_ h3:CGFloat) -> CGFloat{
@@ -67,7 +74,11 @@ class Configuration{
         return h3
     }
     static func getFont() -> UIFont{
-        
+        if Adapter.isPad(){
+            return UIFont.systemFont(ofSize: 15)
+
+        }
+
         return UIFont.systemFont(ofSize: 13)
     }
     static func getData() -> String{

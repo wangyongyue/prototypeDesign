@@ -165,7 +165,7 @@ class TabHHMMCell: UITableViewCell {
    
     private func setLayoutForSelect(){
         
-        let w = WIDTH * bili
+        let w = Adapter.Pad(WIDTHPAD, WIDTH * bili)
 
          image1.snp.makeConstraints { (make) in
              make.bottom.equalTo(-20)
@@ -273,7 +273,10 @@ class TabHHMMCellModel:BaseData{
     
     var name:String?
     override func v_height() -> CGFloat {
-        return Configuration.getCellHeight(status, 50, 80, 50)
+        if status == .edit{
+            return 80
+        }
+        return 50
     }
   
 }

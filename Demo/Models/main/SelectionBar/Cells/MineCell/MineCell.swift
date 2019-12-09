@@ -273,7 +273,12 @@ class MineCell: UITableViewCell {
                 
                 if m.status == .select{
                     
-                    setLayoutForSelect()
+                    if Adapter.isPad(){
+                         setLayoutForEditor()
+
+                     }else{
+                        setLayoutForSelect()
+                    }
                     
                 }else{
                     

@@ -14,6 +14,15 @@ class Editor:Vue,V_ViewControllerProtocol{
     var views = [GetViewProtocol]()
 
    func v_viewController() -> UIViewController{
+    
+       if Adapter.isPad(){
+             
+            let vc = EditorPadViewController()
+            vc.m = self
+            return vc
+       }
+      
+    
        let vc = EditorViewController()
        vc.m = self
        return vc
@@ -34,8 +43,9 @@ class Editor:Vue,V_ViewControllerProtocol{
 
         var array = [VueData]()
         array.append(EditorLRCellModel("项目主页","r_1"))
-        array.append(EditorLRCellModel("预览原型","r_2"))
         array.append(EditorLRCellModel("保存原型","r_3"))
+//        array.append(EditorLRCellModel("预览原型","r_2"))
+
 //        array.append(EditorLRCellModel("查看子项","r_4"))
 //        array.append(EditorLRCellModel("左右模式","r_5"))
 //        array.append(EditorLRCellModel("上移组件","r_6"))
@@ -51,12 +61,12 @@ class Editor:Vue,V_ViewControllerProtocol{
                 
                 UIViewController.toMain()
                 
-            }else if index == 1{
+            }else if index == 2{
                 App.instance.cache()
                 Configuration.instructions.previewDefault = true
                 UIViewController.toHome()
                 
-            }else if index == 2{
+            }else if index == 1{
                 App.instance.cache()
                 Alert.show(str: "保存完成")
                 
@@ -225,11 +235,8 @@ class Editor:Vue,V_ViewControllerProtocol{
             }
             
         }
- 
         
     }
-
-
         
 }
 

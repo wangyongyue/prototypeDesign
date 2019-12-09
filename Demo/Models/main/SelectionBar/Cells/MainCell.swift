@@ -106,7 +106,7 @@ class MainCellModel:VueData{
     }
     override func v_height() -> CGFloat {
         
-        return HEIGHT - 300
+        return Adapter.heigt() - 300
     }
 }
 

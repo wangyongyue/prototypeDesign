@@ -212,10 +212,18 @@ class Content201Cell: UITableViewCell {
             Configuration.isHidden(self.deleteButton, m.status)
             if Configuration.instructions.previewDefault == false{
                 if m.status == .select{
-                   setLayoutForSelect()
+                    if Adapter.isPad(){
+                        setLayoutForEditor()
+
+                    }else{
+                        setLayoutForSelect()
+
+                    }
                                         
                 }else{
+                    
                    setLayoutForEditor()
+
                 }
                 
             }
@@ -236,7 +244,7 @@ class Content201CellModel:BaseData{
     
     var name:String?
     override func v_height() -> CGFloat {
-        return Configuration.getCellHeight(status, 140, 130, 110)
+        return Configuration.getCellHeight(status, 140, 130, Adapter.Pad(130, 110))
     }
   
 }

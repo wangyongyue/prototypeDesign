@@ -88,7 +88,13 @@ class BannerCell: UITableViewCell {
     }
     private func setLayoutForSelect(){
       
-        layout.itemSize = CGSize.init(width: WIDTH/3 - 20, height: 80)
+        if Adapter.isPad(){
+            layout.itemSize = CGSize.init(width: WIDTHPAD - 30, height: 120)
+
+        }else{
+            layout.itemSize = CGSize.init(width: WIDTH/3 - 20, height: 80)
+
+        }
 
 
     }
@@ -150,7 +156,7 @@ class BannerCellModel:BaseData{
     
     var name:String?
     override func v_height() -> CGFloat {
-        return Configuration.getCellHeight(status, 180, 140, 100)
+        return Configuration.getCellHeight(status, 180, 150, Adapter.Pad(150, 100) )
     }
   
 }

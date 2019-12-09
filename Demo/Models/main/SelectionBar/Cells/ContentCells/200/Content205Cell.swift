@@ -285,7 +285,13 @@ class Content205Cell: UITableViewCell {
             Configuration.isHidden(self.deleteButton, m.status)
             if Configuration.instructions.previewDefault == false{
                 if m.status == .select{
-                   setLayoutForSelect()
+                   
+                    if Adapter.isPad(){
+                         setLayoutForEditor()
+
+                     }else{
+                        setLayoutForSelect()
+                    }
                                         
                 }else{
                    setLayoutForEditor()

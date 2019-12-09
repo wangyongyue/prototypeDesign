@@ -166,8 +166,14 @@ class Content102Cell: UITableViewCell {
         self.headerLabel.font = Configuration.getFont()
         self.headerLabel1.font = Configuration.getFont()
 
-        let w = (WIDTH/2 - 24 - 10)/2
-        let h = 90
+    
+        var w = (WIDTH/2 - 24 - 10)/2
+        var h:CGFloat = 90.0
+        if Adapter.isPad(){
+             w = (WIDTHPAD -  24 - 10)/2
+             h = w + 30.0
+           
+        }
 
         self.bigImage.snp.makeConstraints { (make) in
             
@@ -237,7 +243,7 @@ class Content102CellModel:BaseData{
     var name:String?
     override func v_height() -> CGFloat {
                
-        return Configuration.getCellHeight(status, 330, 260, 150)
+        return Configuration.getCellHeight(status, 330, 260, Adapter.Pad(260, 150))
 
     }
   

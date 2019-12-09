@@ -93,7 +93,7 @@ class Content103Cell: UITableViewCell {
             make.top.equalTo(0)
             make.left.equalTo(0)
             make.right.equalTo(0)
-            make.height.equalTo(100)
+            make.height.equalTo(Adapter.Pad(180, 100))
         }
         
     }
@@ -133,7 +133,7 @@ class Content103CellModel:BaseData{
     
     var name:String?
     override func v_height() -> CGFloat {
-        return Configuration.getCellHeight(status, 230, 180, 100)
+        return Configuration.getCellHeight(status, 230, 180, Adapter.Pad(180, 100))
     }
   
 }

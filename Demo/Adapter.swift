@@ -76,6 +76,25 @@ class Adapter {
             return iphoneX
         }
     }
+    static func isPad()-> Bool{
+    
+        let h = UIScreen.main.bounds.size.height
+        if h >= 1024.0{
+            return true
+        }
+        
+        return false
+    
+    }
+    static func Pad(_ a:CGFloat,_ b:CGFloat)-> CGFloat{
+    
+        if Adapter.isPad(){
+            
+            return a
+        }
+        return b
+    
+    }
     
     static func getTopForWindow(view:UIView)-> CGFloat{
         

@@ -127,7 +127,7 @@ class Content106CellModel:BaseData{
     
     var name:String?
     override func v_height() -> CGFloat {
-        return Configuration.getCellHeight(status, 50, 45, 40)
+        return Configuration.getCellHeight(status, 50, 45, Adapter.Pad(45, 40) )
     }
   
 }

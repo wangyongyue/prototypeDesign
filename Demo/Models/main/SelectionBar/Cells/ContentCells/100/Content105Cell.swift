@@ -186,6 +186,19 @@ class Content105Cell: UITableViewCell {
     private func setLayoutForSelect(){
         self.headerLabel.font = Configuration.getFont()
         self.toDoLabel.font = Configuration.getFont()
+        if Adapter.isPad(){
+            
+            self.bigImage.snp.makeConstraints { (make) in
+                       
+                       make.top.equalTo(10)
+                       make.right.equalTo(-12)
+                       make.height.equalTo(80)
+                       make.width.equalTo(60)
+                       
+            }
+            return
+            
+        }
         self.bigImage.snp.makeConstraints { (make) in
             
             make.top.equalTo(10)
@@ -231,7 +244,7 @@ class Content105CellModel:BaseData{
     
     var name:String?
     override func v_height() -> CGFloat {
-        return Configuration.getCellHeight(status, 120, 100, 80)
+        return Configuration.getCellHeight(status, 120, 100, Adapter.Pad(100, 80))
     }
   
 }
